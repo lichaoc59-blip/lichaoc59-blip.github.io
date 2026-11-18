@@ -49,14 +49,39 @@ button:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:1000px){.main{grid-template-columns:1fr}}
 .stage-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .stage{position:relative;aspect-ratio:16/10;background:radial-gradient(1200px 500px at 50% -10%,#f0f9ff,transparent),linear-gradient(180deg,#fbfdff,#f3f6fa);overflow:hidden;min-height:280px}
-.stage canvas{position:absolute;inset:0;width:100%;height:100%}
-.stage .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;opacity:.5}
-#placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:20px;pointer-events:none}
-.stage-top{position:absolute;top:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;justify-content:space-between;z-index:5;pointer-events:none}
-.stage-tools{position:absolute;bottom:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;z-index:5}
+.split{position:absolute;inset:0;display:flex;min-width:0;min-height:0}
+.split.vertical{flex-direction:column}
+.pane{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.pane canvas{position:absolute;inset:0;width:100%;height:100%}
+.pane .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;opacity:.5}
+.pane.twin{background:#0b1526}
+.pane.twin canvas{position:absolute;inset:0;width:100%;height:100%}
+.pane-label{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 10px;font-size:10.5px;font-weight:800;letter-spacing:.3px;background:rgba(255,255,255,.86);color:var(--ink-2);border-bottom:1px solid var(--line)}
+.pane.twin .pane-label{background:rgba(11,21,38,.6);color:#7dd3fc;border-bottom:1px solid rgba(56,189,248,.25)}
+.divider{flex:none;width:10px;cursor:col-resize;background:var(--line-2,var(--line));border-left:1px solid var(--line);border-right:1px solid var(--line);display:grid;place-items:center;touch-action:none;z-index:6}
+.divider::after{content:"";width:3px;height:42px;border-radius:3px;background:#94a3b8}
+.split.vertical .divider{width:auto;height:10px;cursor:row-resize;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split.vertical .divider::after{width:42px;height:3px}
+.divider:hover,.divider:focus-visible,.split.dragging .divider{background:#ccfbf1}
+.split.dragging .pane{pointer-events:none}
+#flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.flow-stat{font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.flow-stat.on{background:var(--good-bg);border-color:#86efac;color:var(--good)}
+#twin-hud{position:absolute;top:30px;left:8px;right:8px;z-index:4;color:#dbeafe;font-size:11px;display:flex;flex-direction:column;gap:2px;pointer-events:none}
+#twin-hud .th{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:#e0f2fe;font-size:11.5px;margin-bottom:2px}
+#twin-hud .th b{color:#4ade80;font-size:10px;font-weight:800}
+#twin-hud .th b.off{color:#f87171}
+#twin-hud .tr{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed rgba(125,211,252,.18);padding:2px 0}
+#twin-hud .tr span{color:#7dd3fc;font-weight:600}
+#twin-hud .tr b{color:#e0f2fe;font-weight:700;text-align:right}
+#twin-hud .tr b i{color:#64748b;font-style:normal;font-weight:600}
+#twin-hud .th2{margin-top:4px;font-weight:800;color:#7dd3fc;letter-spacing:.3px;font-size:10.5px}
+#placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:20px;pointer-events:none;z-index:2}
+.stage-top{position:absolute;top:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;justify-content:space-between;z-index:7;pointer-events:none}
+.stage-tools{position:absolute;bottom:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;z-index:7}
 .stage-tools .legend{font-size:11px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
 .stage-tools .legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px;vertical-align:0}
-#banner{position:absolute;left:12px;right:12px;bottom:12px;z-index:6;padding:10px 12px;border-radius:var(--radius-s);font-size:13px;font-weight:600;display:none;align-items:center;gap:10px}
+#banner{position:absolute;left:12px;right:12px;bottom:12px;z-index:8;padding:10px 12px;border-radius:var(--radius-s);font-size:13px;font-weight:600;display:none;align-items:center;gap:10px}
 #banner.warn{display:flex;background:var(--warn-bg);border:1px solid #fcd34d;color:var(--warn)}
 #banner.danger{display:flex;background:var(--danger-bg);border:1px solid #fecaca;color:var(--danger)}
 #banner.info{display:flex;background:var(--info-bg);border:1px solid #bae6fd;color:var(--info)}
@@ -156,7 +181,7 @@ footer b{color:var(--ink-2)}
 <div class="wrap">
 <header>
   <div class="bar">
-    <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>YOLO 安全帽 · 多人追踪 · 运动分析 · 语音提示</small></div></div>
+    <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>YOLO 安全帽 · 多人追踪 · 数字孪生 · 语音提示</small></div></div>
     <div class="head-status">
       <span class="pill accent" id="pill-mode"><span class="dot"></span>模拟演示</span>
       <span class="pill on" id="pill-ai"><span class="dot"></span><span id="pill-ai-txt">AI 就绪</span></span>
@@ -174,11 +199,23 @@ footer b{color:var(--ink-2)}
   <section class="stage-col">
     <div class="stage-card">
       <div class="stage" id="stage">
-        <div class="grid-bg"></div>
-        <video id="video" muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"></video>
-        <canvas id="canvas"></canvas>
+        <div class="split" id="split">
+          <div class="pane" id="pane-a">
+            <div class="grid-bg"></div>
+            <video id="video" muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"></video>
+            <canvas id="canvas"></canvas>
+            <div class="pane-label"><span>① 现场监控 · 摄像头 + YOLO + 姿态</span></div>
+          </div>
+          <div class="divider" id="divider" role="separator" tabindex="0" aria-label="分屏边界"></div>
+          <div class="pane twin" id="pane-b">
+            <canvas id="canvas2"></canvas>
+            <div class="pane-label"><span>② 数字孪生 · 观管端（只收数据 · 不收视频）</span></div>
+            <div id="twin-hud"></div>
+          </div>
+        </div>
+        <canvas id="flow" aria-hidden="true"></canvas>
         <div id="placeholder">点击「开始监测」进入模拟演示，或「启动摄像头」接入真实画面</div>
-        <div class="stage-top"><span class="tag info">🛡 隐私：仅本地计算，不传输影像</span><span class="tag" id="mode-tag">演示</span></div>
+        <div class="stage-top"><span class="tag info">🛡 隐私：仅本地计算，不传输影像</span><span class="flow-stat" id="flow-stat">分屏已关闭</span><span class="tag" id="mode-tag">演示</span></div>
         <div id="banner" class="idle"><span id="banner-text"></span><button id="banner-btn" hidden>确认</button></div>
         <div class="stage-tools">
           <div class="seg" role="group" aria-label="输入源">
@@ -186,7 +223,21 @@ footer b{color:var(--ink-2)}
             <button id="btn-camera" type="button" aria-pressed="false">启动摄像头</button>
           </div>
           <button id="btn-start" class="primary" type="button">▶ 开始监测</button>
-          <span class="legend"><span><i style="background:#0e7490"></i>人体</span><span><i style="background:#f59e0b"></i>安全帽</span><span><i style="background:#f97316"></i>背心</span><span><i style="background:#1d4ed8"></i>安全带</span><span><i style="background:#0369a1"></i>YOLO 框</span></span>
+          <div class="seg" role="group" aria-label="视图">
+            <button id="btn-single" type="button" aria-pressed="true">单屏</button>
+            <button id="btn-split" type="button" aria-pressed="false">分屏孪生</button>
+          </div>
+          <div class="seg" id="split-ratio" role="group" aria-label="比例" hidden>
+            <button type="button" data-ratio="0.35" aria-pressed="false">左窄</button>
+            <button type="button" data-ratio="0.5" aria-pressed="true">半</button>
+            <button type="button" data-ratio="0.65" aria-pressed="false">左宽</button>
+          </div>
+          <div class="seg" id="split-dir" role="group" aria-label="方向" hidden>
+            <button id="split-h" type="button" aria-pressed="true">左右</button>
+            <button id="split-v" type="button" aria-pressed="false">上下</button>
+          </div>
+          <button id="btn-swap" type="button" hidden>换序</button>
+          <span class="legend"><span><i style="background:#0e7490"></i>人体</span><span><i style="background:#f59e0b"></i>安全帽</span><span><i style="background:#f97316"></i>背心</span><span><i style="background:#1d4ed8"></i>安全带</span><span><i style="background:#38bdf8"></i>骨架流</span><span><i style="background:#22c55e"></i>体征</span><span><i style="background:#ef4444"></i>警报</span></span>
         </div>
       </div>
       <div class="kpis">
@@ -290,7 +341,7 @@ footer b{color:var(--ink-2)}
 
 <footer>
   本页为<b>安全·健康筛查与风险提示</b>演示工具：全部计算在本地浏览器完成，不传输影像与面部数据；疾病概率为基于姿势暴露时间的估算值、康复方案为通用健康指引，<b>不构成医学诊断或治疗建议</b>，请以医生诊断为准。<br>
-  技术栈：YOLO(onnxruntime-web) 安全帽/背心检测 · MediaPipe 多人姿态估计 · ByteTrack 式多人追踪 · rPPG 心率 · 关节角度 vs 标准值运动分析 · 语音提示 · 报告导出。摄像头与真实 AI 需在 localhost 或 HTTPS 下打开（需联网加载模型）。
+  技术栈：YOLO(onnxruntime-web) 安全帽/背心检测 · MediaPipe 多人姿态估计 · ByteTrack 式多人追踪 · rPPG 心率 · 关节角度 vs 标准值运动分析 · 数字孪生分屏 · 语音提示 · 报告导出。摄像头与真实 AI 需在 localhost 或 HTTPS 下打开（需联网加载模型）。
 </footer>
 </div>
 
@@ -376,6 +427,7 @@ const S={
   alarms:[],alarmActive:null,recovering:false,recovery:0,recoveryTotal:30,
   poseLandmarker:null,poseProvider:'',cameraOn:false,camErr:'',demoT:0,
   tracker:null,yolo:{ready:false},
+  split:false,splitRatio:0.5,splitVertical:false,splitSwapped:false,
 };
 function mkWorker(id){return {id,label:id==='demo'?'演示作业者':('作业者 '+id),box:null,pose:null,angles:null,exposure:{},risk:{},hat:null,vest:null,mask:null,harness:null,seen:0,active:true,last:0};}
 function levelOf(id,deg){const j=JOINTS.find(x=>x.id===id);if(deg==null)return 'normal';return j.dir==='above'?(deg>j.danger?'danger':deg>j.caution?'warn':'normal'):(deg<j.danger?'danger':deg<j.caution?'warn':'normal');}
@@ -399,20 +451,25 @@ function voiceCheck(){
   if(a.arm!=null&&a.arm>80)vSay('harness',60000,'检测到高处或过顶作业，请确认已系好安全带');
 }
 
-/* ---------- 主画布 ---------- */
+/* ---------- 主画布 + 数字孪生画布 ---------- */
 const stage=$('stage'),canvas=$('canvas'),ctx=canvas.getContext('2d');
-function fitCanvas(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=stage.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
-let CW=0,CH=0;
+const twinCanvas=$('canvas2'),tctx=twinCanvas.getContext('2d');
+const splitEl=$('split'),paneA=$('pane-a'),paneB=$('pane-b'),divider=$('divider');
+const flowCanvas=$('flow'),fctx=flowCanvas.getContext('2d');
+function fitCanvas(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=paneA.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+function fitTwin(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=paneB.getBoundingClientRect();twinCanvas.width=Math.round(r.width*dpr);twinCanvas.height=Math.round(r.height*dpr);tctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+function fitFlow(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=stage.getBoundingClientRect();flowCanvas.width=Math.round(r.width*dpr);flowCanvas.height=Math.round(r.height*dpr);fctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+let CW=0,CH=0,TW=0,TH=0;
 window.addEventListener('resize',()=>{const s=fitCanvas();CW=s.w;CH=s.h;});
 let lastUI=0;
-function throttledUI(){const now=performance.now();if(now-lastUI<250)return;lastUI=now;buildAngleTable();buildMotionAnalysis();buildRisk();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();}
+function throttledUI(){const now=performance.now();if(now-lastUI<250)return;lastUI=now;buildAngleTable();buildMotionAnalysis();buildRisk();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();updateTwinHud();}
 
 /* ---------- 人体 + PPE 绘制 ---------- */
 const BONE=[['shL','shR'],['shL','elbL'],['elbL','wriL'],['shR','elbR'],['elbR','wriR'],['shL','hipL'],['shR','hipR'],['hipL','hipR'],['hipL','kneeL'],['kneeL','ankL'],['hipR','kneeR'],['kneeR','ankR']];
-function drawPPE(headC,headW,shL,shR,hipL,hipR,ppe){
-  if(ppe.hat===true&&headC){const r=Math.max(10,headW*0.8);ctx.beginPath();ctx.arc(headC.x,headC.y-headW*0.35,r,Math.PI,0);ctx.closePath();ctx.fillStyle='#f59e0b';ctx.fill();ctx.fillStyle='#b45309';ctx.fillRect(headC.x-r*0.9,headC.y-headW*0.32,r*1.8,3);}
-  if(ppe.vest===true&&shL&&shR&&hipL&&hipR){const e=10;ctx.beginPath();ctx.moveTo(shL.x-e,shL.y);ctx.lineTo(shR.x+e,shR.y);ctx.lineTo(hipR.x+e,hipR.y);ctx.lineTo(hipL.x-e,hipL.y);ctx.closePath();ctx.fillStyle='rgba(249,115,22,.78)';ctx.fill();ctx.strokeStyle='#ea580c';ctx.lineWidth=1.5;ctx.stroke();const my=(shL.y+shR.y+hipL.y+hipR.y)/4;ctx.strokeStyle='rgba(255,255,255,.9)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(shL.x-e,my);ctx.lineTo(shR.x+e,my);ctx.stroke();}
-  if(ppe.harness===true&&shL&&shR&&hipL&&hipR){const cx=(shL.x+shR.x+hipL.x+hipR.x)/4;ctx.strokeStyle='#1d4ed8';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(shL.x,shL.y);ctx.lineTo(cx,hipL.y);ctx.lineTo(shR.x,shR.y);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,shL.y);ctx.lineTo(cx,hipL.y);ctx.stroke();}
+function drawPPE(c2,headC,headW,shL,shR,hipL,hipR,ppe){
+  if(ppe.hat===true&&headC){const r=Math.max(10,headW*0.8);c2.beginPath();c2.arc(headC.x,headC.y-headW*0.35,r,Math.PI,0);c2.closePath();c2.fillStyle='#f59e0b';c2.fill();c2.fillStyle='#b45309';c2.fillRect(headC.x-r*0.9,headC.y-headW*0.32,r*1.8,3);}
+  if(ppe.vest===true&&shL&&shR&&hipL&&hipR){const e=10;c2.beginPath();c2.moveTo(shL.x-e,shL.y);c2.lineTo(shR.x+e,shR.y);c2.lineTo(hipR.x+e,hipR.y);c2.lineTo(hipL.x-e,hipL.y);c2.closePath();c2.fillStyle='rgba(249,115,22,.78)';c2.fill();c2.strokeStyle='#ea580c';c2.lineWidth=1.5;c2.stroke();const my=(shL.y+shR.y+hipL.y+hipR.y)/4;c2.strokeStyle='rgba(255,255,255,.9)';c2.lineWidth=3;c2.beginPath();c2.moveTo(shL.x-e,my);c2.lineTo(shR.x+e,my);c2.stroke();}
+  if(ppe.harness===true&&shL&&shR&&hipL&&hipR){const cx=(shL.x+shR.x+hipL.x+hipR.x)/4;c2.strokeStyle='#1d4ed8';c2.lineWidth=4;c2.lineCap='round';c2.beginPath();c2.moveTo(shL.x,shL.y);c2.lineTo(cx,hipL.y);c2.lineTo(shR.x,shR.y);c2.stroke();c2.beginPath();c2.moveTo(cx,shL.y);c2.lineTo(cx,hipL.y);c2.stroke();}
 }
 function drawPose(pts,angles,selected,ppe){
   const map=p=>({x:p.x*CW,y:p.y*CH});
@@ -422,7 +479,7 @@ function drawPose(pts,angles,selected,ppe){
   const headC=nose||earL||earR;const headW=(earL&&earR)?Math.abs(earR.x-earL.x):CW*0.06;
   const line=selected?'#0e7490':'#94a3b8';
   if(headC){ctx.beginPath();ctx.arc(headC.x,headC.y-headW*0.2,Math.max(9,headW*0.55),0,Math.PI*2);ctx.fillStyle=selected?'rgba(14,116,144,.16)':'rgba(100,116,139,.13)';ctx.fill();ctx.strokeStyle=line;ctx.lineWidth=2.5;ctx.stroke();}
-  if(selected&&ppe)drawPPE(headC,headW,shL,shR,hipL,hipR,ppe);
+  if(selected&&ppe)drawPPE(ctx,headC,headW,shL,shR,hipL,hipR,ppe);
   for(const[pa,pb]of bonePts){ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.strokeStyle=line;ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();}
   for(const[pa,pb]of bonePts)for(const p of[pa,pb]){ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle=line;ctx.lineWidth=2;ctx.stroke();}
   if(selected&&angles){
@@ -431,6 +488,85 @@ function drawPose(pts,angles,selected,ppe){
   }
 }
 function drawScene(pts,angles,ppe){const s=fitCanvas();CW=s.w;CH=s.h;ctx.clearRect(0,0,CW,CH);if(S.trail.length>1){ctx.beginPath();S.trail.forEach((p,i)=>{i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y);});ctx.strokeStyle='rgba(245,158,11,.35)';ctx.lineWidth=2;ctx.lineCap='round';ctx.stroke();}drawPose(pts,angles,true,ppe);}
+
+/* ---------- 数字孪生（观管端） ---------- */
+function drawTwin(pts,angles,ppe){
+  const s=fitTwin();TW=s.w;TH=s.h;tctx.clearRect(0,0,TW,TH);
+  const g=tctx.createLinearGradient(0,0,0,TH);g.addColorStop(0,'#0b1526');g.addColorStop(1,'#0e1c30');tctx.fillStyle=g;tctx.fillRect(0,0,TW,TH);
+  tctx.strokeStyle='rgba(56,189,248,.09)';tctx.lineWidth=1;
+  for(let x=0;x<TW;x+=36){tctx.beginPath();tctx.moveTo(x,0);tctx.lineTo(x,TH);tctx.stroke();}
+  for(let y=0;y<TH;y+=36){tctx.beginPath();tctx.moveTo(0,y);tctx.lineTo(TW,y);tctx.stroke();}
+  const mp=p=>({x:(1-(p?p.x:0))*TW,y:(p?p.y:0)*TH});
+  const P2=n=>{const p=lm(pts,n);return p?mp(p):null;};
+  const bones=[];for(const[a,b]of BONE){const pa=P2(a),pb=P2(b);if(pa&&pb)bones.push([pa,pb]);}
+  const shL=P2('shL'),shR=P2('shR'),hipL=P2('hipL'),hipR=P2('hipR');const headC=P2('nose')||P2('earR');const headW=(P2('earL')&&P2('earR'))?Math.abs(P2('earR').x-P2('earL').x):TW*0.06;
+  tctx.shadowColor='rgba(56,189,248,.8)';tctx.shadowBlur=12;
+  tctx.strokeStyle='#38bdf8';tctx.lineWidth=3;tctx.lineCap='round';
+  for(const[pa,pb]of bones){tctx.beginPath();tctx.moveTo(pa.x,pa.y);tctx.lineTo(pb.x,pb.y);tctx.stroke();}
+  for(const[pa,pb]of bones)for(const p of[pa,pb]){tctx.beginPath();tctx.arc(p.x,p.y,3.5,0,Math.PI*2);tctx.fillStyle='#7dd3fc';tctx.fill();}
+  tctx.shadowBlur=0;
+  if(ppe)drawPPE(tctx,headC,headW,shL,shR,hipL,hipR,ppe);
+}
+function updateTwinHud(){
+  const el=$('twin-hud');if(!S.split){return;}
+  const a=S.angles||{};const p=S.ppe;const hr=S.hr.value;
+  const row=(k,v,r)=>`<div class="tr"><span>${k}</span><b>${v} <i>${r}</i></b></div>`;
+  const ppeTxt=(p.hat===false?'⚠未戴帽':p.hat===true?'帽✓':'帽—')+' '+(p.vest===false?'⚠未穿背心':p.vest===true?'背心✓':'背心—')+' '+(p.harness===false?'⚠未系带':p.harness===true?'带✓':'带—');
+  let riskTxt='正常',rv=0;for(const j of JOINTS){if((S.risk[j.id]||0)>rv){rv=S.risk[j.id];riskTxt=j.disease+' '+rv;}}
+  el.innerHTML=`<div class="th"><span>数字孪生 · 观管端</span><b class="${S.running?'':'off'}">${S.running?'● 接收中':'○ 未连接'}</b></div>`
+    +`<div class="tr"><span>心率</span><b>${hr!=null?hr+' bpm':'—'}</b></div>`
+    +`<div class="tr"><span>防护</span><b>${ppeTxt}</b></div>`
+    +`<div class="tr"><span>最高风险</span><b>${rv?riskTxt:'正常'}</b></div>`
+    +`<div class="th2">关节角度 vs 标准</div>`
+    +row('左肩外展',a.armL!=null?a.armL.toFixed(0)+'°':'—','标准10°')
+    +row('右肩外展',a.armR!=null?a.armR.toFixed(0)+'°':'—','标准10°')
+    +row('躯干前倾',a.trunk!=null?a.trunk.toFixed(0)+'°':'—','标准0°')
+    +row('左膝屈曲',a.kneeL!=null?a.kneeL.toFixed(0)+'°':'—','标准180°');
+}
+
+/* ---------- 数据流动画（现场 → 观管 的数据包） ---------- */
+let flowDots=[];
+const FLOW_COLOR={skeleton:'#38bdf8',vitals:'#22c55e',alarm:'#ef4444',feedback:'#f59e0b'};
+const _flowLast={sk:0,vi:0,al:0,fb:0};
+function mkFlowDot(type,back){return{t0:performance.now(),dur:back?1050:900,type,back,lane:0.16+Math.random()*0.68};}
+function flowTick(){
+  const stat=$('flow-stat');const now=performance.now();
+  if(!S.split){stat.className='flow-stat';stat.textContent='分屏已关闭';return;}
+  if(!S.running){flowDots=[];stat.className='flow-stat';stat.textContent='等待开始监测';return;}
+  if(now-_flowLast.sk>280){_flowLast.sk=now;flowDots.push(mkFlowDot('skeleton',false));}
+  if(now-_flowLast.vi>1500){_flowLast.vi=now;flowDots.push(mkFlowDot('vitals',false));}
+  if(S.alarmActive&&now-_flowLast.al>1800){_flowLast.al=now;flowDots.push(mkFlowDot('alarm',false));}
+  if(now-_flowLast.fb>4800){_flowLast.fb=now;flowDots.push(mkFlowDot('feedback',true));}
+  const rate=(flowDots.filter(d=>!d.back).length/4).toFixed(1);
+  stat.className='flow-stat on';stat.textContent=`📡 现场→观管 ${rate}/秒 · 视频 0B`;
+}
+function flowLoop(now){
+  requestAnimationFrame(flowLoop);
+  if(!S.split){return;}
+  const sw=fitFlow();
+  const ra=paneA.getBoundingClientRect(),rb=paneB.getBoundingClientRect(),sr=stage.getBoundingClientRect();
+  const aL=ra.left-sr.left,aT=ra.top-sr.top,aR=ra.right-sr.left,aB=ra.bottom-sr.top;
+  const bL=rb.left-sr.left,bT=rb.top-sr.top,bR=rb.right-sr.left,bB=rb.bottom-sr.top;
+  const vertical=S.splitVertical;
+  const edgeFirst=vertical?aT<bT:aL<bL;
+  const reach=40;
+  const along=vertical?[edgeFirst?aB-reach:aT+reach,edgeFirst?bT+reach:bB-reach]:[edgeFirst?aR-reach:aL+reach,edgeFirst?bL+reach:bR-reach];
+  const span=vertical?sw.w:sw.h;
+  const laneAt=i=>span*(0.16+i*0.09);
+  fctx.clearRect(0,0,sw.w,sw.h);
+  for(let i=flowDots.length-1;i>=0;i--){
+    const d=flowDots[i],k=(now-d.t0)/d.dur;
+    if(k>=1){flowDots.splice(i,1);continue;}
+    const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    const from=d.back?along[1]:along[0],to=d.back?along[0]:along[1];
+    const pos=from+(to-from)*e,lane=laneAt(d.lane)+(d.lane-0.5)*20;
+    const x=vertical?lane:pos,y=vertical?pos:lane;
+    const r=d.type==='alarm'?6.5:4.2,alpha=Math.min(1,Math.min(k,1-k)*6),col=FLOW_COLOR[d.type];
+    fctx.globalAlpha=alpha*0.32;fctx.fillStyle=col;fctx.beginPath();fctx.arc(x,y,r*2.4,0,Math.PI*2);fctx.fill();
+    fctx.globalAlpha=alpha;fctx.beginPath();fctx.arc(x,y,r,0,Math.PI*2);fctx.fill();
+    fctx.globalAlpha=1;
+  }
+}
 
 /* ---------- 摄像头场景 ---------- */
 function drawCameraScene(dets,tracks){
@@ -447,6 +583,24 @@ function drawCameraScene(dets,tracks){
     if(t.pose)drawPose(t.pose,w&&w.angles,sel,sel&&w?{hat:w.hat,vest:w.vest,mask:w.mask,harness:w.harness}:null);
   }
 }
+
+/* ---------- 分屏布局 ---------- */
+function applySplit(){
+  splitEl.classList.toggle('vertical',S.splitVertical);
+  paneA.style.order=S.splitSwapped?'3':'1';divider.style.order='2';paneB.style.order=S.splitSwapped?'1':'3';
+  if(!S.split){paneB.style.display='none';divider.style.display='none';paneA.style.flex='1 1 0';flowCanvas.style.display='none';$('twin-hud').style.display='none';}
+  else{
+    paneB.style.display='flex';divider.style.display='grid';flowCanvas.style.display='block';$('twin-hud').style.display='flex';
+    const r=Math.min(0.8,Math.max(0.2,S.splitRatio));S.splitRatio=r;
+    const first=S.splitSwapped?paneB:paneA,second=S.splitSwapped?paneA:paneB;
+    first.style.flex=`0 0 calc(${(r*100).toFixed(1)}% - 5px)`;second.style.flex='1 1 0';
+  }
+  $('btn-single').setAttribute('aria-pressed',String(!S.split));$('btn-split').setAttribute('aria-pressed',String(S.split));
+  $('split-ratio').hidden=!S.split;$('split-dir').hidden=!S.split;$('btn-swap').hidden=!S.split;
+  $('split-h').setAttribute('aria-pressed',String(!S.splitVertical));$('split-v').setAttribute('aria-pressed',String(S.splitVertical));
+  for(const b of document.querySelectorAll('[data-ratio]'))b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.ratio)-S.splitRatio)<0.01));
+}
+function toggleSplit(on){S.split=on;applySplit();if(on){toast('已开启「分屏·数字孪生」：左=现场监控，右=观管端只收数据');speak('已开启分屏数字孪生视图');}}
 
 /* ---------- 关节角度面板 ---------- */
 function buildAngleTable(){const tb=$('angle-tbody');tb.innerHTML='';const a=S.angles||{};for(const j of JOINTS){const deg=a[j.id];const lv=levelOf(j.id,deg);const tr=document.createElement('tr');if(lv!=='normal')tr.className=lv;const tag=lv==='danger'?'危险':lv==='warn'?'注意':'正常';const cls=lv==='danger'?'danger':lv==='warn'?'warn':'good';tr.innerHTML=`<td>${j.name}</td><td class="num">${deg==null?'—':deg.toFixed(0)}${j.unit}</td><td><span class="tag ${cls}">${tag}</span></td>`;tb.appendChild(tr);}}
@@ -517,6 +671,7 @@ function demoUpdate(dt){
   tickRiskWorker(w,dt);tickRecovery(dt);
   S.selected='demo';S.angles=w.angles;S.risk=w.risk;S.ppe={hat:w.hat,vest:w.vest,mask:w.mask,harness:w.harness};
   drawScene(pts,w.angles,S.ppe);
+  if(S.split)drawTwin(pts,w.angles,S.ppe);
   throttledUI();
 }
 
@@ -597,6 +752,7 @@ async function cameraStep(now){
   if(sel&&sel.pose)computeMotion(sel.pose,dts);
   if(S.angles){tickRecovery(dts);if(S.angles.trunk!=null&&S.angles.trunk>55&&S.angles.headBelowHip)triggerFall();}
   drawCameraScene(dets,tracks);
+  if(S.split&&sel&&sel.pose)drawTwin(sel.pose,sel.angles,S.ppe);
   throttledUI();
 }
 function computeMotion(pts,dts){const hipL=lm(pts,'hipL'),hipR=lm(pts,'hipR'),shL=lm(pts,'shL'),shR=lm(pts,'shR');if(!(vis(hipL)&&vis(hipR)&&vis(shL)&&vis(shR)))return;const hipM=MID(hipL,hipR);const sw=Math.max(0.05,LEN(P(shL,shR)));if(!S._lastHip){S._lastHip=hipM;return;}const dist=LEN(P(S._lastHip,hipM))/sw;S._lastHip=hipM;S.speed=S.speed*0.85+(dist/Math.max(0.01,dts))*0.15;S.trail.push({x:hipM.x*CW,y:hipM.y*CH});if(S.trail.length>30)S.trail.shift();const v=S.speed;S.activity=v<0.15?'静止':v<0.5?'轻度':v<1.2?'中度':'剧烈';S.motion=Math.min(100,Math.round(v*70));}
@@ -615,6 +771,14 @@ $('btn-demo').onclick=()=>{if(S.mode!=='demo'){stopMonitoring();if(video.srcObje
 $('btn-camera').onclick=()=>{if(S.mode!=='camera')switchMode('camera');};
 $('btn-start').onclick=()=>{if(S.running)stopMonitoring();else startMonitoring();};
 $('btn-voice').onclick=()=>{voiceOn=!voiceOn;$('btn-voice').textContent=voiceOn?'🔊 语音开':'🔇 语音关';if(voiceOn)speak('语音提示已开启');};
+$('btn-single').onclick=()=>toggleSplit(false);
+$('btn-split').onclick=()=>toggleSplit(true);
+for(const b of document.querySelectorAll('[data-ratio]'))b.onclick=()=>{S.splitRatio=Number(b.dataset.ratio);applySplit();};
+$('split-h').onclick=()=>{S.splitVertical=false;applySplit();};
+$('split-v').onclick=()=>{S.splitVertical=true;applySplit();};
+$('btn-swap').onclick=()=>{S.splitSwapped=!S.splitSwapped;S.splitRatio=1-S.splitRatio;applySplit();};
+divider.addEventListener('pointerdown',e=>{if(!S.split)return;divider.setPointerCapture(e.pointerId);splitEl.classList.add('dragging');const rect=splitEl.getBoundingClientRect();const move=ev=>{S.splitRatio=S.splitVertical?(ev.clientY-rect.top)/rect.height:(ev.clientX-rect.left)/rect.width;applySplit();};const up=()=>{splitEl.classList.remove('dragging');divider.removeEventListener('pointermove',move);divider.removeEventListener('pointerup',up);divider.removeEventListener('pointercancel',up);};divider.addEventListener('pointermove',move);divider.addEventListener('pointerup',up);divider.addEventListener('pointercancel',up);});
+divider.addEventListener('keydown',e=>{if(!S.split)return;if(e.key==='ArrowLeft'||e.key==='ArrowUp')S.splitRatio-=0.03;else if(e.key==='ArrowRight'||e.key==='ArrowDown')S.splitRatio+=0.03;else return;e.preventDefault();applySplit();});
 $('rehab-pick').onchange=renderRehabSteps;
 $('btn-rehab-start').onclick=()=>{const id=$('rehab-pick').value;const d=DISEASE[id];setBanner('info','💪 开始康复训练：'+d.rehab.join(' → '),'完成');toast('已开始「'+$('rehab-pick').selectedOptions[0].textContent+'」康复训练');const steps=[...$('rehab-steps').children];steps.forEach((s,i)=>setTimeout(()=>{if(!steps[i])return;steps[i].querySelector('.idx').textContent='✓';steps[i].querySelector('.idx').classList.add('done');},(i+1)*900));};
 $('btn-ppe-clear').onclick=()=>{S.ppeLog=[];logList($('ppe-log'),[],'暂无记录');};
@@ -650,9 +814,12 @@ $('btn-csv').onclick=()=>{const r=collectReport();download('AI人体姿态与康
 /* ---------- 启动 ---------- */
 function boot(){
   fitCanvas();S.workers={demo:mkWorker('demo')};S.selected='demo';
+  applySplit();
   buildAngleTable();buildMotionAnalysis();buildRisk();buildPrevent();buildRehab();initTabs();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();
   if('speechSynthesis' in window){window.speechSynthesis.getVoices();window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();}
   setInterval(voiceCheck,1500);
+  setInterval(flowTick,250);
+  requestAnimationFrame(flowLoop);
   startMonitoring();
 }
 boot();
