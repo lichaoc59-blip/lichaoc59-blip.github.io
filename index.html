@@ -1,4 +1,4 @@
-<title>AI人体姿态与康复监测</title>
+<title>AI人体姿态与康复监测 · 分屏数字孪生</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,7 +8,7 @@
 :root{
   color-scheme: light;
   --bg:#ffffff;--bg-soft:#f6f8fb;--surface:#ffffff;--surface-2:#f1f5f9;
-  --ink:#0f172a;--ink-2:#475569;--muted:#8a97a8;--line:#e5eaf1;--line-strong:#cbd5e1;
+  --ink:#0f172a;--ink-2:#475569;--muted:#8a97a8;--line:#e5eaf1;--line-2:#d8e0ea;--line-strong:#cbd5e1;
   --accent:#0e7490;--accent-soft:#ecfeff;--accent-strong:#155e75;
   --good:#15803d;--good-bg:#ecfdf5;--warn:#b45309;--warn-bg:#fffbeb;--danger:#dc2626;--danger-bg:#fef2f2;--info:#0369a1;--info-bg:#eff6ff;
   --font-display:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -17,57 +17,62 @@
   --radius:14px;--radius-s:9px;--shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;max-width:1280px;margin:0 auto}
+html,body{margin:0;padding:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
 h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0}
 .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:env(safe-area-inset-top,0px);z-index:30}
-header .bar{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:17px;letter-spacing:.2px}
-.brand .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#0e7490,#22d3ee);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:900}
-.brand small{font-weight:500;color:var(--muted);font-size:12px;display:block;line-height:1.1}
-.head-status{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
-.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.pill.on .dot{background:var(--good)}
-.pill.warn{border-color:#fcd34d;background:var(--warn-bg);color:var(--warn)}
-.pill.danger{border-color:#fecaca;background:var(--danger-bg);color:var(--danger)}
-.pill.accent{border-color:#a5f3fc;background:var(--accent-soft);color:var(--accent-strong)}
-button{font-family:var(--font-body);cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:var(--radius-s);padding:8px 13px;font-size:13px;font-weight:600;transition:background .15s,border-color .15s,transform .05s}
+button{font-family:var(--font-body);cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:var(--radius-s);padding:7px 11px;font-size:12.5px;font-weight:600;transition:background .15s,border-color .15s,transform .05s;white-space:nowrap}
 button:hover{border-color:var(--accent);color:var(--accent-strong)}
 button:active{transform:translateY(1px)}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 button.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff}
 button:disabled{opacity:.45;cursor:not-allowed}
-.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:var(--radius-s);overflow:hidden}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
 .seg button{border:0;border-radius:0;background:var(--surface);color:var(--ink-2)}
 .seg button[aria-pressed=true]{background:var(--accent);color:#fff}
-.seg button+button{border-left:1px solid var(--line-strong)}
-.main{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;padding-block:16px;align-items:start}
-@media(max-width:1000px){.main{grid-template-columns:1fr}}
-.stage-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.stage{position:relative;aspect-ratio:16/10;background:radial-gradient(1200px 500px at 50% -10%,#f0f9ff,transparent),linear-gradient(180deg,#fbfdff,#f3f6fa);overflow:hidden;min-height:280px}
-.split{position:absolute;inset:0;display:flex;min-width:0;min-height:0}
-.split.vertical{flex-direction:column}
-.pane{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
-.pane canvas{position:absolute;inset:0;width:100%;height:100%}
-.pane .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;opacity:.5}
-.pane.twin{background:#0b1526}
-.pane.twin canvas{position:absolute;inset:0;width:100%;height:100%}
-.pane-label{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 10px;font-size:10.5px;font-weight:800;letter-spacing:.3px;background:rgba(255,255,255,.86);color:var(--ink-2);border-bottom:1px solid var(--line)}
-.pane.twin .pane-label{background:rgba(11,21,38,.6);color:#7dd3fc;border-bottom:1px solid rgba(56,189,248,.25)}
-.divider{flex:none;width:10px;cursor:col-resize;background:var(--line-2,var(--line));border-left:1px solid var(--line);border-right:1px solid var(--line);display:grid;place-items:center;touch-action:none;z-index:6}
-.divider::after{content:"";width:3px;height:42px;border-radius:3px;background:#94a3b8}
-.split.vertical .divider{width:auto;height:10px;cursor:row-resize;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.split.vertical .divider::after{width:42px;height:3px}
-.divider:hover,.divider:focus-visible,.split.dragging .divider{background:#ccfbf1}
-.split.dragging .pane{pointer-events:none}
-#flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
-.flow-stat{font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.seg button+button{border-left:1px solid var(--line-2)}
+
+/* ---- 顶部控制栏（借鉴参考站 .bar） ---- */
+.bar{display:flex;align-items:center;gap:9px;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--surface);flex-wrap:wrap;flex:none;z-index:30}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:16px;letter-spacing:.2px;margin-right:4px}
+.brand .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#0e7490,#22d3ee);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:900;flex:none}
+.brand small{font-weight:500;color:var(--muted);font-size:11px;display:block;line-height:1.2}
+.title{font-size:13px;font-weight:700;margin-right:auto;min-width:0}
+.title small{display:block;font-weight:400;color:var(--muted);font-size:11px;line-height:1.4}
+.flow-stat{font-size:11.5px;font-weight:800;padding:6px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
 .flow-stat.on{background:var(--good-bg);border-color:#86efac;color:var(--good)}
-#twin-hud{position:absolute;top:30px;left:8px;right:8px;z-index:4;color:#dbeafe;font-size:11px;display:flex;flex-direction:column;gap:2px;pointer-events:none}
+
+/* ---- 分屏区 ---- */
+.split{position:relative;flex:1;display:flex;min-height:0;background:var(--bg)}
+.split.vertical{flex-direction:column}
+.pane{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--surface);overflow:hidden}
+.pane-label{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.3px;border-bottom:1px solid var(--line-2);flex:none}
+.pane-label.edge{background:var(--info-bg);color:#1d4ed8}
+.pane-label.center{background:var(--accent-soft);color:var(--accent-strong)}
+.stage{position:relative;flex:1;min-height:0;background:radial-gradient(1200px 500px at 50% -10%,#f0f9ff,transparent),linear-gradient(180deg,#fbfdff,#f3f6fa)}
+.stage canvas,.stage video{position:absolute;inset:0;width:100%;height:100%}
+.stage video{object-fit:cover;display:none}
+.stage .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;opacity:.5}
+#placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:12.5px;text-align:center;padding:16px;pointer-events:none;z-index:2}
+#banner{position:absolute;left:10px;right:10px;bottom:10px;z-index:8;padding:9px 11px;border-radius:var(--radius-s);font-size:12.5px;font-weight:600;display:none;align-items:center;gap:10px}
+#banner.warn{display:flex;background:var(--warn-bg);border:1px solid #fcd34d;color:var(--warn)}
+#banner.danger{display:flex;background:var(--danger-bg);border:1px solid #fecaca;color:var(--danger)}
+#banner.info{display:flex;background:var(--info-bg);border:1px solid #bae6fd;color:var(--info)}
+#banner button{margin-left:auto;padding:4px 9px;font-size:11.5px}
+.pane-controls{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:7px 10px;border-top:1px solid var(--line-2);flex:none}
+.pane-controls .legend{font-size:11px;color:var(--muted);display:flex;gap:9px;flex-wrap:wrap;margin-left:auto}
+.pane-controls .legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px;vertical-align:0}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);flex:none}
+.kpi{background:var(--surface);padding:8px 10px}
+.kpi small{display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi strong{font-size:16px;font-weight:800;display:block;line-height:1.2;margin-top:2px}
+.kpi strong .unit{font-size:11px;font-weight:600;color:var(--muted)}
+.kpi span{font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.twin{background:#0b1526}
+.twin-body{position:relative;flex:1;min-height:0}
+.twin-body canvas{position:absolute;inset:0;width:100%;height:100%}
+#twin-hud{position:absolute;top:10px;left:9px;right:9px;z-index:4;color:#dbeafe;font-size:11px;display:flex;flex-direction:column;gap:2px;pointer-events:none;max-height:calc(100% - 20px);overflow:hidden}
 #twin-hud .th{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:#e0f2fe;font-size:11.5px;margin-bottom:2px}
 #twin-hud .th b{color:#4ade80;font-size:10px;font-weight:800}
 #twin-hud .th b.off{color:#f87171}
@@ -76,28 +81,31 @@ button:disabled{opacity:.45;cursor:not-allowed}
 #twin-hud .tr b{color:#e0f2fe;font-weight:700;text-align:right}
 #twin-hud .tr b i{color:#64748b;font-style:normal;font-weight:600}
 #twin-hud .th2{margin-top:4px;font-weight:800;color:#7dd3fc;letter-spacing:.3px;font-size:10.5px}
-#placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:20px;pointer-events:none;z-index:2}
-.stage-top{position:absolute;top:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;justify-content:space-between;z-index:7;pointer-events:none}
-.stage-tools{position:absolute;bottom:10px;left:12px;right:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;z-index:7}
-.stage-tools .legend{font-size:11px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
-.stage-tools .legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px;vertical-align:0}
-#banner{position:absolute;left:12px;right:12px;bottom:12px;z-index:8;padding:10px 12px;border-radius:var(--radius-s);font-size:13px;font-weight:600;display:none;align-items:center;gap:10px}
-#banner.warn{display:flex;background:var(--warn-bg);border:1px solid #fcd34d;color:var(--warn)}
-#banner.danger{display:flex;background:var(--danger-bg);border:1px solid #fecaca;color:var(--danger)}
-#banner.info{display:flex;background:var(--info-bg);border:1px solid #bae6fd;color:var(--info)}
-#banner button{margin-left:auto}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
-.kpi{background:var(--surface);padding:12px 14px}
-.kpi small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.3px}
-.kpi strong{font-size:21px;font-weight:800;display:block;line-height:1.2;margin-top:2px}
-.kpi strong .unit{font-size:12px;font-weight:600;color:var(--muted)}
-.kpi span{font-size:11px;color:var(--ink-2)}
-@media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}}
-.panel{border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface);overflow:hidden}
-.tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto;background:var(--surface-2)}
-.tabs button{border:0;border-radius:0;background:transparent;padding:11px 10px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap;border-bottom:2px solid transparent}
-.tabs button[aria-selected=true]{color:var(--accent-strong);border-bottom-color:var(--accent);background:var(--surface)}
-.tabpane{display:none;padding:14px}
+.divider{flex:none;width:10px;cursor:col-resize;background:var(--line-2);border-left:1px solid var(--line);border-right:1px solid var(--line);display:grid;place-items:center;touch-action:none;z-index:6}
+.divider::after{content:"";width:3px;height:42px;border-radius:3px;background:#94a3b8}
+.split.vertical .divider{width:auto;height:10px;cursor:row-resize;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split.vertical .divider::after{width:42px;height:3px}
+.divider:hover,.divider:focus-visible,.split.dragging .divider{background:#ccfbf1}
+.split.dragging .pane{pointer-events:none}
+#flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+
+/* ---- 底部图例提示栏（借鉴参考站 .hint-bar） ---- */
+.hint-bar{font-size:11px;color:var(--muted);padding:6px 14px;background:var(--surface);border-top:1px solid var(--line);line-height:1.55;flex:none}
+.hint-bar b{color:var(--ink-2)}
+.legend{display:inline-flex;gap:8px;flex-wrap:wrap;margin-left:4px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;vertical-align:0}
+
+/* ---- 分析面板（抽屉） ---- */
+.analyze{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:58vh;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -12px 32px rgba(15,23,42,.18);z-index:40;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .25s ease}
+.analyze.open{transform:translateY(0)}
+.analyze .tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto;background:var(--surface-2);flex:none}
+.analyze .tabs button{border:0;border-radius:0;background:transparent;padding:11px 12px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap;border-bottom:2px solid transparent}
+.analyze .tabs button[aria-selected=true]{color:var(--accent-strong);border-bottom-color:var(--accent);background:var(--surface)}
+.analyze-body{overflow-y:auto;padding:14px 16px 24px;flex:1}
+.analyze-head{display:flex;align-items:center;gap:8px;padding:0 16px;border-top:1px solid var(--line);flex:none}
+.analyze-head .tag{margin-left:auto}
+.analyze-close{margin-left:auto}
+.tabpane{display:none}
 .tabpane.active{display:block}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);padding:12px}
 .card+.card{margin-top:10px}
@@ -118,18 +126,12 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .worker-chip b{font-size:12.5px}
 .worker-chip span{font-size:11px;color:var(--ink-2)}
 .worker-chip.sel{border-color:var(--accent);background:var(--accent-soft)}
-.angle-table{width:100%;border-collapse:collapse;font-size:12.5px}
-.angle-table th,.angle-table td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
-.angle-table th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.3px}
-.angle-table td.num{text-align:right;font-weight:700}
-.angle-table tr.warn td{background:var(--warn-bg)}
+.angle-table,.motion-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.angle-table th,.angle-table td,.motion-table th,.motion-table td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
+.angle-table th,.motion-table th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.3px}
+.angle-table td.num,.motion-table td.num{text-align:right;font-weight:700}
+.angle-table tr.warn td,.motion-table tr.warn td{background:var(--warn-bg)}
 .angle-table tr.danger td{background:var(--danger-bg)}
-.motion-table{width:100%;border-collapse:collapse;font-size:12.5px}
-.motion-table th,.motion-table td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
-.motion-table th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.3px}
-.motion-table td.num{text-align:right;font-weight:700}
-.motion-table tr.warn td{background:var(--warn-bg)}
-.motion-table tr.danger td{background:var(--danger-bg)}
 .ppe-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ppe-item{border:1px solid var(--line);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;gap:3px}
 .ppe-item .icon{font-size:18px;line-height:1}
@@ -153,7 +155,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .disease .col ul{margin:0;padding-left:16px;font-size:12px;color:var(--ink-2)}
 .disease .col ul li{margin:2px 0}
 .disease .mech{font-size:12px;color:var(--ink-2);background:var(--info-bg);border-radius:8px;padding:8px 10px}
-.log{max-height:220px;overflow-y:auto;margin:0;padding:0;list-style:none;font-size:12px}
+.log{max-height:200px;overflow-y:auto;margin:0;padding:0;list-style:none;font-size:12px}
 .log li{padding:7px 4px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:flex-start}
 .log li .t{color:var(--muted);font-family:var(--font-mono);font-size:11px;white-space:nowrap;flex:none}
 .log li.alert .t,.log li.alert{color:var(--danger)}
@@ -171,178 +173,95 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .protocol{border-left:3px solid var(--danger);background:var(--danger-bg);border-radius:8px;padding:10px 12px}
 .protocol ol{margin:6px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-2)}
 .protocol ol li{margin:3px 0;font-weight:600}
-footer{padding:14px 0 26px;color:var(--muted);font-size:11.5px;line-height:1.6}
-footer b{color:var(--ink-2)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%)}
+@media(max-width:760px){.title small{display:none}.flow-stat{display:none}.kpis{grid-template-columns:repeat(2,1fr)}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
-<div class="wrap">
-<header>
-  <div class="bar">
-    <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>YOLO 安全帽 · 多人追踪 · 数字孪生 · 语音提示</small></div></div>
-    <div class="head-status">
-      <span class="pill accent" id="pill-mode"><span class="dot"></span>模拟演示</span>
-      <span class="pill on" id="pill-ai"><span class="dot"></span><span id="pill-ai-txt">AI 就绪</span></span>
-      <span class="pill" id="pill-people"><span class="dot"></span>人数 0</span>
-      <span class="pill" id="pill-hr"><span class="dot"></span>心率 —</span>
-      <span class="pill" id="pill-posture"><span class="dot"></span>姿态 正常</span>
-      <button id="btn-voice" class="voice-btn" type="button" title="开关语音提示">🔊 语音开</button>
-      <button id="btn-report" type="button" title="导出本次监测报告">📄 导出报告</button>
-      <button id="btn-csv" type="button" title="导出 CSV 数据">⬇ CSV</button>
-    </div>
-  </div>
-</header>
+<div class="bar" id="bar">
+  <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>现场监控 ↔ 观管室 · 分屏数字孪生</small></div></div>
+  <div class="title">现场监控 → 观管室 · 实时分屏数字孪生<small id="title-sub">左：摄像头·YOLO·姿态监测 + 现场语音反馈 · 右：观管室只接收 坐标·骨架·体征·防护 数字并显示数字孪生 · 视频不发送</small></div>
+  <span class="flow-stat" id="flow-stat" title="两屏之间往返的数据（中间移动的点是真实数据包）">传输待机</span>
+  <div class="seg" role="group" aria-label="视图"><button id="btn-single" type="button" aria-pressed="false">单屏</button><button id="btn-split" type="button" aria-pressed="true">分屏孪生</button></div>
+  <div class="seg" role="group" aria-label="布局"><button id="split-h" type="button" aria-pressed="true">左右</button><button id="split-v" type="button" aria-pressed="false">上下</button></div>
+  <div class="seg" role="group" aria-label="比例"><button type="button" data-ratio="0.35" aria-pressed="false">左窄</button><button type="button" data-ratio="0.5" aria-pressed="true">半</button><button type="button" data-ratio="0.65" aria-pressed="false">左宽</button></div>
+  <button id="btn-swap" type="button" title="左右两屏互换">换序</button>
+</div>
 
-<main class="main">
-  <section class="stage-col">
-    <div class="stage-card">
-      <div class="stage" id="stage">
-        <div class="split" id="split">
-          <div class="pane" id="pane-a">
-            <div class="grid-bg"></div>
-            <video id="video" muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"></video>
-            <canvas id="canvas"></canvas>
-            <div class="pane-label"><span>① 现场监控 · 摄像头 + YOLO + 姿态</span></div>
-          </div>
-          <div class="divider" id="divider" role="separator" tabindex="0" aria-label="分屏边界"></div>
-          <div class="pane twin" id="pane-b">
-            <canvas id="canvas2"></canvas>
-            <div class="pane-label"><span>② 数字孪生 · 观管端（只收数据 · 不收视频）</span></div>
-            <div id="twin-hud"></div>
-          </div>
-        </div>
-        <canvas id="flow" aria-hidden="true"></canvas>
-        <div id="placeholder">点击「开始监测」进入模拟演示，或「启动摄像头」接入真实画面</div>
-        <div class="stage-top"><span class="tag info">🛡 隐私：仅本地计算，不传输影像</span><span class="flow-stat" id="flow-stat">分屏已关闭</span><span class="tag" id="mode-tag">演示</span></div>
-        <div id="banner" class="idle"><span id="banner-text"></span><button id="banner-btn" hidden>确认</button></div>
-        <div class="stage-tools">
-          <div class="seg" role="group" aria-label="输入源">
-            <button id="btn-demo" type="button" aria-pressed="true">模拟演示</button>
-            <button id="btn-camera" type="button" aria-pressed="false">启动摄像头</button>
-          </div>
-          <button id="btn-start" class="primary" type="button">▶ 开始监测</button>
-          <div class="seg" role="group" aria-label="视图">
-            <button id="btn-single" type="button" aria-pressed="true">单屏</button>
-            <button id="btn-split" type="button" aria-pressed="false">分屏孪生</button>
-          </div>
-          <div class="seg" id="split-ratio" role="group" aria-label="比例" hidden>
-            <button type="button" data-ratio="0.35" aria-pressed="false">左窄</button>
-            <button type="button" data-ratio="0.5" aria-pressed="true">半</button>
-            <button type="button" data-ratio="0.65" aria-pressed="false">左宽</button>
-          </div>
-          <div class="seg" id="split-dir" role="group" aria-label="方向" hidden>
-            <button id="split-h" type="button" aria-pressed="true">左右</button>
-            <button id="split-v" type="button" aria-pressed="false">上下</button>
-          </div>
-          <button id="btn-swap" type="button" hidden>换序</button>
-          <span class="legend"><span><i style="background:#0e7490"></i>人体</span><span><i style="background:#f59e0b"></i>安全帽</span><span><i style="background:#f97316"></i>背心</span><span><i style="background:#1d4ed8"></i>安全带</span><span><i style="background:#38bdf8"></i>骨架流</span><span><i style="background:#22c55e"></i>体征</span><span><i style="background:#ef4444"></i>警报</span></span>
-        </div>
-      </div>
-      <div class="kpis">
-        <div class="kpi"><small>识别人数</small><strong id="k-people">0</strong><span id="k-people-sub">—</span></div>
-        <div class="kpi"><small>实时心率 (rPPG)</small><strong><span class="num" id="k-hr">—</span><span class="unit">bpm</span></strong><span id="k-hr-q">等待信号</span></div>
-        <div class="kpi"><small>运动强度</small><strong id="k-motion">—</strong><span id="k-motion-sub">静止</span></div>
-        <div class="kpi"><small>最高关节风险</small><strong id="k-risk">—</strong><span id="k-risk-sub">无</span></div>
-        <div class="kpi"><small>装备缺失</small><strong id="k-ppe">—</strong><span id="k-ppe-sub">—</span></div>
-      </div>
+<div class="split" id="split">
+  <section class="pane" id="pane-a">
+    <div class="pane-label edge"><span>① 现场监控 · 摄像头 + YOLO + 姿态 → 发往观管室</span></div>
+    <div class="stage" id="stage">
+      <div class="grid-bg"></div>
+      <video id="video" muted playsinline></video>
+      <canvas id="canvas"></canvas>
+      <div id="placeholder">点击「▶ 开始监测」进入模拟演示，或「启动摄像头」接入真实画面</div>
+      <div id="banner" class="idle"><span id="banner-text"></span><button id="banner-btn" hidden>确认</button></div>
+    </div>
+    <div class="pane-controls">
+      <div class="seg" role="group" aria-label="输入源"><button id="btn-demo" type="button" aria-pressed="true">模拟演示</button><button id="btn-camera" type="button" aria-pressed="false">启动摄像头</button></div>
+      <button id="btn-start" class="primary" type="button">▶ 开始监测</button>
+      <button id="btn-voice" type="button" title="开关语音提示">🔊 语音开</button>
+      <button id="btn-analyze" type="button" title="打开关节角度/运动分析/风险/康复/装备/警报面板">📊 分析面板</button>
+      <button id="btn-report" type="button" title="导出本次监测报告">📄 报告</button>
+      <button id="btn-csv" type="button" title="导出 CSV 数据">⬇ CSV</button>
+      <span class="legend"><span><i style="background:#0e7490"></i>人体</span><span><i style="background:#f59e0b"></i>安全帽</span><span><i style="background:#f97316"></i>背心</span><span><i style="background:#1d4ed8"></i>安全带</span></span>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><small>识别人数</small><strong id="k-people">0</strong><span id="k-people-sub">—</span></div>
+      <div class="kpi"><small>实时心率</small><strong><span class="num" id="k-hr">—</span><span class="unit">bpm</span></strong><span id="k-hr-q">等待信号</span></div>
+      <div class="kpi"><small>运动强度</small><strong id="k-motion">—</strong><span id="k-motion-sub">静止</span></div>
+      <div class="kpi"><small>最高风险</small><strong id="k-risk">—</strong><span id="k-risk-sub">无</span></div>
+      <div class="kpi"><small>装备缺失</small><strong id="k-ppe">—</strong><span id="k-ppe-sub">—</span></div>
     </div>
   </section>
+  <div class="divider" id="divider" role="separator" tabindex="0" aria-label="分屏边界。箭头键调节大小"></div>
+  <section class="pane twin" id="pane-b">
+    <div class="pane-label center"><span>② 观管室 · 实时数字孪生接收</span></div>
+    <div class="twin-body" id="twin-body"><canvas id="canvas2"></canvas><div id="twin-hud"></div></div>
+  </section>
+  <canvas id="flow" aria-hidden="true"></canvas>
+</div>
 
-  <aside class="panel">
-    <div class="tabs" role="tablist">
-      <button data-tab="angle" role="tab" aria-selected="true">关节角度</button>
-      <button data-tab="motion" role="tab" aria-selected="false">运动分析</button>
-      <button data-tab="risk" role="tab" aria-selected="false">健康风险</button>
-      <button data-tab="rehab" role="tab" aria-selected="false">预防·康复</button>
-      <button data-tab="ppe" role="tab" aria-selected="false">穿脱检测</button>
-      <button data-tab="alarm" role="tab" aria-selected="false">警报·应急</button>
-    </div>
+<div class="hint-bar" id="hint">左屏按 <b>▶ 开始</b> 后摄像头 / 演示启动。影像只在左屏本机，右屏观管室只接收 <b>坐标·骨架·防护·心率·血压</b> 等数字。中间穿过的点是实际传输的数据包<span class="legend"><span><i style="background:#38bdf8"></i>坐标·骨架</span><span><i style="background:#22c55e"></i>心率·体征</span><span><i style="background:#ef4444"></i>警报·处置</span><span><i style="background:#f59e0b"></i>观管确认·指示</span></span>。边界线可拖动或 ←/→ 键调节。</div>
 
+<div class="analyze" id="analyze">
+  <div class="tabs" role="tablist">
+    <button data-tab="angle" role="tab" aria-selected="true">关节角度</button>
+    <button data-tab="motion" role="tab" aria-selected="false">运动分析</button>
+    <button data-tab="risk" role="tab" aria-selected="false">健康风险</button>
+    <button data-tab="rehab" role="tab" aria-selected="false">预防·康复</button>
+    <button data-tab="ppe" role="tab" aria-selected="false">穿脱检测</button>
+    <button data-tab="alarm" role="tab" aria-selected="false">警报·应急</button>
+  </div>
+  <div class="analyze-body">
     <div class="tabpane active" data-pane="angle">
-      <div class="card">
-        <h3>多人追踪 <span class="tag info" id="track-count">0 人</span></h3>
-        <div class="worker-chips" id="worker-chips"><span class="hint">未检测到作业者</span></div>
-        <p class="hint" style="margin-top:6px">YOLO 检测人员 → 逐人追踪编号 → 点击编号切换查看该作业者的角度与风险。</p>
-      </div>
-      <div class="card">
-        <h3>实时关节角度 <span class="tag info" id="angle-now-tag">—</span></h3>
-        <table class="angle-table" id="angle-table"><thead><tr><th>关节</th><th>角度</th><th>状态</th></tr></thead><tbody id="angle-tbody"></tbody></table>
-        <p class="hint" style="margin-top:8px">角度由 MediaPipe 骨骼点实时计算。超出阈值按累计暴露时间计入疾病风险。</p>
-      </div>
-      <div class="chart-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:12.5px">心率趋势</b><small style="color:var(--muted);font-size:11px">最近 30 秒</small></div>
-        <canvas id="hr-chart"></canvas>
-      </div>
+      <div class="card"><h3>多人追踪 <span class="tag info" id="track-count">0 人</span></h3><div class="worker-chips" id="worker-chips"><span class="hint">未检测到作业者</span></div><p class="hint" style="margin-top:6px">YOLO 检测人员 → 逐人追踪编号 → 点击编号切换查看该作业者的角度与风险。</p></div>
+      <div class="card"><h3>实时关节角度 <span class="tag info" id="angle-now-tag">—</span></h3><table class="angle-table" id="angle-table"><thead><tr><th>关节</th><th>角度</th><th>状态</th></tr></thead><tbody id="angle-tbody"></tbody></table><p class="hint" style="margin-top:8px">角度由 MediaPipe 骨骼点实时计算。超出阈值按累计暴露时间计入疾病风险。</p></div>
+      <div class="chart-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:12.5px">心率趋势</b><small style="color:var(--muted);font-size:11px">最近 30 秒</small></div><canvas id="hr-chart"></canvas></div>
     </div>
-
     <div class="tabpane" data-pane="motion" hidden>
-      <div class="card">
-        <h3>实时运动分析 · 关节角度 vs 标准值 <span class="tag info">左/右 独立</span></h3>
-        <table class="motion-table"><thead><tr><th>部位</th><th>当前</th><th>标准值</th><th>差值</th><th>判定</th></tr></thead><tbody id="motion-tbody"></tbody></table>
-        <p class="hint" style="margin-top:8px">差值 = 当前角度 − 标准参考值。「大于」表示超出中立位（前倾/外展过度），「小于」表示屈曲不足（肘/膝/髋弯曲）。标准值为中立姿态参考，供对比筛查。</p>
-      </div>
+      <div class="card"><h3>实时运动分析 · 关节角度 vs 标准值 <span class="tag info">左/右 独立</span></h3><table class="motion-table"><thead><tr><th>部位</th><th>当前</th><th>标准值</th><th>差值</th><th>判定</th></tr></thead><tbody id="motion-tbody"></tbody></table><p class="hint" style="margin-top:8px">差值 = 当前角度 − 标准参考值。「大于」表示超出中立位（前倾/外展过度），「小于」表示屈曲不足（肘/膝/髋弯曲）。标准值为中立姿态参考，供对比筛查。</p></div>
     </div>
-
     <div class="tabpane" data-pane="risk" hidden>
-      <div class="card">
-        <h3>过度姿势 → 疾病风险 <span class="tag warn">筛查提示</span></h3>
-        <div id="risk-list"></div>
-        <p class="hint" style="margin-top:8px">概率为「长期保持该姿势的相对风险升高」估算值，基于累计暴露时间，仅供风险提示，不构成医学诊断。</p>
-      </div>
+      <div class="card"><h3>过度姿势 → 疾病风险 <span class="tag warn">筛查提示</span></h3><div id="risk-list"></div><p class="hint" style="margin-top:8px">概率为「长期保持该姿势的相对风险升高」估算值，基于累计暴露时间，仅供风险提示，不构成医学诊断。</p></div>
     </div>
-
     <div class="tabpane" data-pane="rehab" hidden>
-      <div class="card">
-        <h3>预防清单 <span class="tag good">日常</span></h3>
-        <ul class="hint" style="padding-left:18px;margin:0" id="prevent-list"></ul>
-      </div>
-      <div class="card">
-        <h3>康复训练 <span class="tag info">按需</span></h3>
-        <div id="rehab-select" style="margin-bottom:8px">
-          <label class="hint" style="display:block;margin-bottom:4px">针对部位</label>
-          <select id="rehab-pick" style="width:100%;padding:7px;border:1px solid var(--line-strong);border-radius:8px;font-family:inherit"></select>
-        </div>
-        <div id="rehab-steps"></div>
-        <button id="btn-rehab-start" class="primary" type="button" style="width:100%">开始康复训练</button>
-      </div>
-      <div class="card">
-        <h3>康复恢复机制 <span class="tag" id="recovery-tag">待命</span></h3>
-        <p class="hint" id="recovery-desc">发生受伤警报后进入恢复流程：停止作业 → 评估 → 康复训练 → 姿态回到中立并保持，进度达 100% 即完成恢复。</p>
-        <div class="progress-wrap"><div class="progress"><i id="recovery-bar" style="width:0%"></i></div><b class="num" id="recovery-pct">0%</b></div>
-      </div>
+      <div class="card"><h3>预防清单 <span class="tag good">日常</span></h3><ul class="hint" style="padding-left:18px;margin:0" id="prevent-list"></ul></div>
+      <div class="card"><h3>康复训练 <span class="tag info">按需</span></h3><div id="rehab-select" style="margin-bottom:8px"><label class="hint" style="display:block;margin-bottom:4px">针对部位</label><select id="rehab-pick" style="width:100%;padding:7px;border:1px solid var(--line-strong);border-radius:8px;font-family:inherit"></select></div><div id="rehab-steps"></div><button id="btn-rehab-start" class="primary" type="button" style="width:100%">开始康复训练</button></div>
+      <div class="card"><h3>康复恢复机制 <span class="tag" id="recovery-tag">待命</span></h3><p class="hint" id="recovery-desc">发生受伤警报后进入恢复流程：停止作业 → 评估 → 康复训练 → 姿态回到中立并保持，进度达 100% 即完成恢复。</p><div class="progress-wrap"><div class="progress"><i id="recovery-bar" style="width:0%"></i></div><b class="num" id="recovery-pct">0%</b></div></div>
     </div>
-
     <div class="tabpane" data-pane="ppe" hidden>
-      <div class="card">
-        <h3>防护装备穿脱检测 <span class="tag" id="ppe-mode-tag">YOLO</span></h3>
-        <div class="ppe-grid" id="ppe-grid"></div>
-        <p class="hint" style="margin-top:8px">安全帽/护具口罩/安全背心由 YOLO 识别；安全带无模型检测、按「高处/过顶作业」规则提示并需人工确认。多人时显示当前选中作业者。</p>
-      </div>
-      <div class="card">
-        <h3>穿脱记录 <button class="tag info" id="btn-ppe-clear" style="border:0;background:var(--info-bg);color:var(--info)">清空</button></h3>
-        <ol class="log" id="ppe-log"><li><span class="t">--</span>暂无记录</li></ol>
-      </div>
+      <div class="card"><h3>防护装备穿脱检测 <span class="tag" id="ppe-mode-tag">YOLO</span></h3><div class="ppe-grid" id="ppe-grid"></div><p class="hint" style="margin-top:8px">安全帽/护具口罩/安全背心由 YOLO 识别；安全带无模型检测、按「高处/过顶作业」规则提示并需人工确认。多人时显示当前选中作业者。</p></div>
+      <div class="card"><h3>穿脱记录 <button class="tag info" id="btn-ppe-clear" style="border:0;background:var(--info-bg);color:var(--info)">清空</button></h3><ol class="log" id="ppe-log"><li><span class="t">--</span>暂无记录</li></ol></div>
     </div>
-
     <div class="tabpane" data-pane="alarm" hidden>
-      <div class="card">
-        <h3>受伤警报 <span class="tag danger" id="alarm-tag">无</span></h3>
-        <div class="protocol" id="protocol"><b>应急响应流程</b><ol><li>立即停止作业，确认现场安全</li><li>检查伤者意识与呼吸，必要时呼叫急救（120）</li><li>AED 与急救包就位，等待专业救援</li></ol></div>
-      </div>
-      <div class="card">
-        <h3>警报记录 <button class="tag info" id="btn-alarm-clear" style="border:0;background:var(--info-bg);color:var(--info)">清空</button></h3>
-        <ol class="log" id="alarm-log"><li><span class="t">--</span>暂无警报</li></ol>
-      </div>
+      <div class="card"><h3>受伤警报 <span class="tag danger" id="alarm-tag">无</span></h3><div class="protocol" id="protocol"><b>应急响应流程</b><ol><li>立即停止作业，确认现场安全</li><li>检查伤者意识与呼吸，必要时呼叫急救（120）</li><li>AED 与急救包就位，等待专业救援</li></ol></div></div>
+      <div class="card"><h3>警报记录 <button class="tag info" id="btn-alarm-clear" style="border:0;background:var(--info-bg);color:var(--info)">清空</button></h3><ol class="log" id="alarm-log"><li><span class="t">--</span>暂无警报</li></ol></div>
     </div>
-  </aside>
-</main>
-
-<footer>
-  本页为<b>安全·健康筛查与风险提示</b>演示工具：全部计算在本地浏览器完成，不传输影像与面部数据；疾病概率为基于姿势暴露时间的估算值、康复方案为通用健康指引，<b>不构成医学诊断或治疗建议</b>，请以医生诊断为准。<br>
-  技术栈：YOLO(onnxruntime-web) 安全帽/背心检测 · MediaPipe 多人姿态估计 · ByteTrack 式多人追踪 · rPPG 心率 · 关节角度 vs 标准值运动分析 · 数字孪生分屏 · 语音提示 · 报告导出。摄像头与真实 AI 需在 localhost 或 HTTPS 下打开（需联网加载模型）。
-</footer>
+  </div>
+  <div class="analyze-head"><span class="hint">全部计算在本地浏览器完成，不传输影像与面部数据；结果仅供筛查与风险提示，不构成医学诊断。</span><button class="analyze-close" id="btn-analyze-close" type="button">✕ 关闭</button></div>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
@@ -419,15 +338,16 @@ const REFS=[
 ];
 
 /* ---------- 状态 ---------- */
+const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 const S={
   mode:'demo',running:false,aiReady:false,selected:'demo',
   workers:{},angles:null,risk:{},ppe:{hat:null,vest:null,mask:null,harness:null},
   hr:{value:null,quality:'等待信号',history:[]},hrBuf:[],
   motion:0,activity:'静止',trail:[],speed:0,
-  alarms:[],alarmActive:null,recovering:false,recovery:0,recoveryTotal:30,
+  alarms:[],ppeLog:[],alarmActive:null,recovering:false,recovery:0,recoveryTotal:30,
   poseLandmarker:null,poseProvider:'',cameraOn:false,camErr:'',demoT:0,
   tracker:null,yolo:{ready:false},
-  split:false,splitRatio:0.5,splitVertical:false,splitSwapped:false,
+  split:store.get('aihh-split')!=='0',splitRatio:Number(store.get('aihh-split-ratio'))||0.5,splitVertical:(store.get('aihh-split-dir')||'h')==='v',splitSwapped:store.get('aihh-split-swap')==='1',
 };
 function mkWorker(id){return {id,label:id==='demo'?'演示作业者':('作业者 '+id),box:null,pose:null,angles:null,exposure:{},risk:{},hat:null,vest:null,mask:null,harness:null,seen:0,active:true,last:0};}
 function levelOf(id,deg){const j=JOINTS.find(x=>x.id===id);if(deg==null)return 'normal';return j.dir==='above'?(deg>j.danger?'danger':deg>j.caution?'warn':'normal'):(deg<j.danger?'danger':deg<j.caution?'warn':'normal');}
@@ -451,14 +371,14 @@ function voiceCheck(){
   if(a.arm!=null&&a.arm>80)vSay('harness',60000,'检测到高处或过顶作业，请确认已系好安全带');
 }
 
-/* ---------- 主画布 + 数字孪生画布 ---------- */
-const stage=$('stage'),canvas=$('canvas'),ctx=canvas.getContext('2d');
-const twinCanvas=$('canvas2'),tctx=twinCanvas.getContext('2d');
-const splitEl=$('split'),paneA=$('pane-a'),paneB=$('pane-b'),divider=$('divider');
+/* ---------- 画布 ---------- */
+const splitEl=$('split'),stage=$('stage'),canvas=$('canvas'),ctx=canvas.getContext('2d');
+const twinBody=$('twin-body'),twinCanvas=$('canvas2'),tctx=twinCanvas.getContext('2d');
+const paneA=$('pane-a'),paneB=$('pane-b'),divider=$('divider');
 const flowCanvas=$('flow'),fctx=flowCanvas.getContext('2d');
-function fitCanvas(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=paneA.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
-function fitTwin(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=paneB.getBoundingClientRect();twinCanvas.width=Math.round(r.width*dpr);twinCanvas.height=Math.round(r.height*dpr);tctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
-function fitFlow(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=stage.getBoundingClientRect();flowCanvas.width=Math.round(r.width*dpr);flowCanvas.height=Math.round(r.height*dpr);fctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+function fitCanvas(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=stage.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+function fitTwin(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=twinBody.getBoundingClientRect();twinCanvas.width=Math.round(r.width*dpr);twinCanvas.height=Math.round(r.height*dpr);tctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
+function fitFlow(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=splitEl.getBoundingClientRect();flowCanvas.width=Math.round(r.width*dpr);flowCanvas.height=Math.round(r.height*dpr);fctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
 let CW=0,CH=0,TW=0,TH=0;
 window.addEventListener('resize',()=>{const s=fitCanvas();CW=s.w;CH=s.h;});
 let lastUI=0;
@@ -513,7 +433,7 @@ function updateTwinHud(){
   const row=(k,v,r)=>`<div class="tr"><span>${k}</span><b>${v} <i>${r}</i></b></div>`;
   const ppeTxt=(p.hat===false?'⚠未戴帽':p.hat===true?'帽✓':'帽—')+' '+(p.vest===false?'⚠未穿背心':p.vest===true?'背心✓':'背心—')+' '+(p.harness===false?'⚠未系带':p.harness===true?'带✓':'带—');
   let riskTxt='正常',rv=0;for(const j of JOINTS){if((S.risk[j.id]||0)>rv){rv=S.risk[j.id];riskTxt=j.disease+' '+rv;}}
-  el.innerHTML=`<div class="th"><span>数字孪生 · 观管端</span><b class="${S.running?'':'off'}">${S.running?'● 接收中':'○ 未连接'}</b></div>`
+  el.innerHTML=`<div class="th"><span>数字孪生 · 观管室</span><b class="${S.running?'':'off'}">${S.running?'● 接收中':'○ 未连接'}</b></div>`
     +`<div class="tr"><span>心率</span><b>${hr!=null?hr+' bpm':'—'}</b></div>`
     +`<div class="tr"><span>防护</span><b>${ppeTxt}</b></div>`
     +`<div class="tr"><span>最高风险</span><b>${rv?riskTxt:'正常'}</b></div>`
@@ -525,26 +445,33 @@ function updateTwinHud(){
 }
 
 /* ---------- 数据流动画（现场 → 观管 的数据包） ---------- */
-let flowDots=[];
-const FLOW_COLOR={skeleton:'#38bdf8',vitals:'#22c55e',alarm:'#ef4444',feedback:'#f59e0b'};
-const _flowLast={sk:0,vi:0,al:0,fb:0};
-function mkFlowDot(type,back){return{t0:performance.now(),dur:back?1050:900,type,back,lane:0.16+Math.random()*0.68};}
+const FLOW_LANES=[
+  {type:'skeleton',color:'#38bdf8',label:'坐标·骨架',lane:0},
+  {type:'vitals',color:'#22c55e',label:'心率·体征',lane:1},
+  {type:'incident',color:'#ef4444',label:'警报·处置',lane:2},
+  {type:'feedback',color:'#f59e0b',label:'观管确认·指示',lane:3},
+];
+let flowDots=[];const flowRecent=[];const _flowLast={sk:0,vi:0,al:0,fb:0};
+function laneOf(t){return FLOW_LANES.find(l=>l.type===t);}
+function mkFlowDot(type,back,big){const l=laneOf(type);return{t0:performance.now(),dur:back?1100:950,type,back,big,lane:l.lane,jitter:(Math.random()-.5)*14};}
+function pushFlow(type,back,bytes,big){const now=performance.now();flowRecent.push({t:now,out:!back,bytes});while(flowRecent.length&&now-flowRecent[0].t>4000)flowRecent.shift();if(flowDots.length<80)flowDots.push(mkFlowDot(type,back,big));}
 function flowTick(){
   const stat=$('flow-stat');const now=performance.now();
-  if(!S.split){stat.className='flow-stat';stat.textContent='分屏已关闭';return;}
-  if(!S.running){flowDots=[];stat.className='flow-stat';stat.textContent='等待开始监测';return;}
-  if(now-_flowLast.sk>280){_flowLast.sk=now;flowDots.push(mkFlowDot('skeleton',false));}
-  if(now-_flowLast.vi>1500){_flowLast.vi=now;flowDots.push(mkFlowDot('vitals',false));}
-  if(S.alarmActive&&now-_flowLast.al>1800){_flowLast.al=now;flowDots.push(mkFlowDot('alarm',false));}
-  if(now-_flowLast.fb>4800){_flowLast.fb=now;flowDots.push(mkFlowDot('feedback',true));}
-  const rate=(flowDots.filter(d=>!d.back).length/4).toFixed(1);
-  stat.className='flow-stat on';stat.textContent=`📡 现场→观管 ${rate}/秒 · 视频 0B`;
+  if(!S.split){stat.className='flow-stat';stat.textContent='单屏模式 · 分屏已关闭';return;}
+  if(!S.running){flowDots=[];flowRecent.length=0;stat.className='flow-stat';stat.textContent='传输待机 · 点击 ▶ 开始监测';return;}
+  if(now-_flowLast.sk>250){_flowLast.sk=now;pushFlow('skeleton',false,120,false);}
+  if(now-_flowLast.vi>1400){_flowLast.vi=now;pushFlow('vitals',false,40,false);}
+  if(S.alarmActive&&now-_flowLast.al>1800){_flowLast.al=now;pushFlow('incident',false,60,true);}
+  if(now-_flowLast.fb>4500){_flowLast.fb=now;pushFlow('feedback',true,30,false);}
+  const out=flowRecent.filter(r=>r.out),back=flowRecent.filter(r=>!r.out);
+  stat.className='flow-stat'+(out.length?' on':'');
+  stat.textContent=out.length?`📡 现场→观管 ${(out.length/4).toFixed(1)}/秒 · ${(out.reduce((s,r)=>s+r.bytes,0)/4096).toFixed(1)} KB/s · 观管→现场 ${(back.length/4).toFixed(1)}/秒 · 视频 0 B`:'传输待机…';
 }
 function flowLoop(now){
   requestAnimationFrame(flowLoop);
-  if(!S.split){return;}
+  if(!S.split)return;
   const sw=fitFlow();
-  const ra=paneA.getBoundingClientRect(),rb=paneB.getBoundingClientRect(),sr=stage.getBoundingClientRect();
+  const ra=paneA.getBoundingClientRect(),rb=paneB.getBoundingClientRect(),sr=splitEl.getBoundingClientRect();
   const aL=ra.left-sr.left,aT=ra.top-sr.top,aR=ra.right-sr.left,aB=ra.bottom-sr.top;
   const bL=rb.left-sr.left,bT=rb.top-sr.top,bR=rb.right-sr.left,bB=rb.bottom-sr.top;
   const vertical=S.splitVertical;
@@ -552,18 +479,20 @@ function flowLoop(now){
   const reach=40;
   const along=vertical?[edgeFirst?aB-reach:aT+reach,edgeFirst?bT+reach:bB-reach]:[edgeFirst?aR-reach:aL+reach,edgeFirst?bL+reach:bR-reach];
   const span=vertical?sw.w:sw.h;
-  const laneAt=i=>span*(0.16+i*0.09);
+  const laneAt=i=>span*(0.30+i*0.08);
   fctx.clearRect(0,0,sw.w,sw.h);
+  fctx.lineWidth=8;fctx.lineCap='round';fctx.strokeStyle='rgba(148,163,184,.10)';
+  for(const L of FLOW_LANES){fctx.beginPath();if(vertical){fctx.moveTo(laneAt(L.lane),along[0]);fctx.lineTo(laneAt(L.lane),along[1]);}else{fctx.moveTo(along[0],laneAt(L.lane));fctx.lineTo(along[1],laneAt(L.lane));}fctx.stroke();}
   for(let i=flowDots.length-1;i>=0;i--){
     const d=flowDots[i],k=(now-d.t0)/d.dur;
     if(k>=1){flowDots.splice(i,1);continue;}
     const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
-    const from=d.back?along[1]:along[0],to=d.back?along[0]:along[1];
-    const pos=from+(to-from)*e,lane=laneAt(d.lane)+(d.lane-0.5)*20;
+    const from=d.back?along[1]:along[0],to=d.back?along[0]:along[1],pos=from+(to-from)*e,lane=laneAt(d.lane)+d.jitter*0.3;
     const x=vertical?lane:pos,y=vertical?pos:lane;
-    const r=d.type==='alarm'?6.5:4.2,alpha=Math.min(1,Math.min(k,1-k)*6),col=FLOW_COLOR[d.type];
-    fctx.globalAlpha=alpha*0.32;fctx.fillStyle=col;fctx.beginPath();fctx.arc(x,y,r*2.4,0,Math.PI*2);fctx.fill();
+    const r=d.big?7:4.5,alpha=Math.min(1,Math.min(k,1-k)*6),col=laneOf(d.type).color;
+    fctx.globalAlpha=alpha*0.35;fctx.fillStyle=col;fctx.beginPath();fctx.arc(x,y,r*2.4,0,Math.PI*2);fctx.fill();
     fctx.globalAlpha=alpha;fctx.beginPath();fctx.arc(x,y,r,0,Math.PI*2);fctx.fill();
+    if(d.big){fctx.font='800 11px sans-serif';fctx.fillStyle=col;fctx.fillText(laneOf(d.type).label,x+10,y-8);}
     fctx.globalAlpha=1;
   }
 }
@@ -596,11 +525,11 @@ function applySplit(){
     first.style.flex=`0 0 calc(${(r*100).toFixed(1)}% - 5px)`;second.style.flex='1 1 0';
   }
   $('btn-single').setAttribute('aria-pressed',String(!S.split));$('btn-split').setAttribute('aria-pressed',String(S.split));
-  $('split-ratio').hidden=!S.split;$('split-dir').hidden=!S.split;$('btn-swap').hidden=!S.split;
   $('split-h').setAttribute('aria-pressed',String(!S.splitVertical));$('split-v').setAttribute('aria-pressed',String(S.splitVertical));
-  for(const b of document.querySelectorAll('[data-ratio]'))b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.ratio)-S.splitRatio)<0.01));
+  for(const b of document.querySelectorAll('[data-ratio]'))b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.ratio)-(S.splitSwapped?1-S.splitRatio:S.splitRatio))<0.01));
+  store.set('aihh-split',S.split?'1':'0');store.set('aihh-split-ratio',String(S.splitRatio));store.set('aihh-split-dir',S.splitVertical?'v':'h');store.set('aihh-split-swap',S.splitSwapped?'1':'0');
 }
-function toggleSplit(on){S.split=on;applySplit();if(on){toast('已开启「分屏·数字孪生」：左=现场监控，右=观管端只收数据');speak('已开启分屏数字孪生视图');}}
+function toggleSplit(on){S.split=on;applySplit();if(on){toast('已开启「分屏·数字孪生」：左=现场监控，右=观管室只收数据');speak('已开启分屏数字孪生视图');}}
 
 /* ---------- 关节角度面板 ---------- */
 function buildAngleTable(){const tb=$('angle-tbody');tb.innerHTML='';const a=S.angles||{};for(const j of JOINTS){const deg=a[j.id];const lv=levelOf(j.id,deg);const tr=document.createElement('tr');if(lv!=='normal')tr.className=lv;const tag=lv==='danger'?'危险':lv==='warn'?'注意':'正常';const cls=lv==='danger'?'danger':lv==='warn'?'warn':'good';tr.innerHTML=`<td>${j.name}</td><td class="num">${deg==null?'—':deg.toFixed(0)}${j.unit}</td><td><span class="tag ${cls}">${tag}</span></td>`;tb.appendChild(tr);}}
@@ -640,7 +569,7 @@ function samplePpg(pts){const shL=lm(pts,'shL'),shR=lm(pts,'shR'),earL=lm(pts,'e
 function drawHRChart(){const cv=$('hr-chart');const dpr=Math.min(2,window.devicePixelRatio||1);const w=cv.clientWidth||300,h=90;cv.width=w*dpr;cv.height=h*dpr;const c=cv.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);const hist=S.hr.history;c.strokeStyle='var(--line)';c.lineWidth=1;for(let i=1;i<4;i++){c.beginPath();c.moveTo(0,h*i/4);c.lineTo(w,h*i/4);c.stroke();}if(hist.length<2){c.fillStyle='var(--muted)';c.font='11px sans-serif';c.fillText('等待心率信号…',10,20);return;}const min=40,max=200;const map=v=>h-(Math.min(max,Math.max(min,v))-min)/(max-min)*h;c.beginPath();hist.forEach((v,i)=>{const x=i/(hist.length-1)*w,y=map(v);i?c.lineTo(x,y):c.moveTo(x,y);});c.strokeStyle='#0e7490';c.lineWidth=2;c.stroke();c.lineTo(w,h);c.lineTo(0,h);c.closePath();c.fillStyle='rgba(14,116,144,.08)';c.fill();const last=hist[hist.length-1];c.fillStyle='#0e7490';c.font='700 12px sans-serif';c.fillText(last+' bpm',w-70,map(last)-6);}
 
 /* ---------- KPI ---------- */
-function refreshKpi(){const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('k-people').textContent=active.length;$('k-people-sub').textContent=S.mode==='camera'?'YOLO 检测':'演示';$('k-hr').textContent=S.hr.value!=null?S.hr.value:'—';$('k-hr-q').textContent=S.hr.quality;$('k-motion').textContent=S.motion+'%';$('k-motion-sub').textContent=S.activity;let worst=null,wr=0;for(const j of JOINTS){if((S.risk[j.id]||0)>wr){wr=S.risk[j.id];worst=j;}}$('k-risk').textContent=worst?worst.disease:'—';$('k-risk-sub').textContent=worst?`风险 ${wr}/100`:'无';const p=S.ppe;const miss=[];if(p.hat===false)miss.push('帽');if(p.vest===false)miss.push('背心');if(p.mask===false)miss.push('口罩');if(p.harness===false)miss.push('安全带');$('k-ppe').textContent=miss.length?miss.join('、'):'齐';$('k-ppe-sub').textContent=miss.length?'缺失 '+miss.length+' 项':'装备齐全';$('pill-people').innerHTML=`<span class="dot"></span>人数 ${active.length}`;$('pill-hr').innerHTML=`<span class="dot"></span>心率 ${S.hr.value!=null?S.hr.value:'—'} bpm`;let worstLv='normal';for(const j of JOINTS){const lv=levelOf(j.id,S.angles&&S.angles[j.id]);if(lv==='danger'){worstLv='danger';break;}if(lv==='warn')worstLv='warn';}const pp=$('pill-posture');pp.className='pill '+(worstLv==='danger'?'danger':worstLv==='warn'?'warn':'on');pp.innerHTML=`<span class="dot"></span>姿态 ${worstLv==='danger'?'危险':worstLv==='warn'?'注意':'正常'}`;$('angle-now-tag').textContent=worstLv==='danger'?'存在危险角度':worstLv==='warn'?'存在注意角度':'全部正常';}
+function refreshKpi(){const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('k-people').textContent=active.length;$('k-people-sub').textContent=S.mode==='camera'?'YOLO 检测':'演示';$('k-hr').textContent=S.hr.value!=null?S.hr.value:'—';$('k-hr-q').textContent=S.hr.quality;$('k-motion').textContent=S.motion+'%';$('k-motion-sub').textContent=S.activity;let worst=null,wr=0;for(const j of JOINTS){if((S.risk[j.id]||0)>wr){wr=S.risk[j.id];worst=j;}}$('k-risk').textContent=worst?worst.disease:'—';$('k-risk-sub').textContent=worst?`风险 ${wr}/100`:'无';const p=S.ppe;const miss=[];if(p.hat===false)miss.push('帽');if(p.vest===false)miss.push('背心');if(p.mask===false)miss.push('口罩');if(p.harness===false)miss.push('安全带');$('k-ppe').textContent=miss.length?miss.join('、'):'齐';$('k-ppe-sub').textContent=miss.length?'缺失 '+miss.length+' 项':'装备齐全';$('angle-now-tag').textContent='正常';}
 
 /* =========================================================================
  * 模拟演示
@@ -712,11 +641,10 @@ async function startCamera(){
     const stream=await navigator.mediaDevices.getUserMedia({video:{width:1280,height:720,facingMode:'user'},audio:false});
     video.srcObject=stream;video.style.display='block';await video.play();
     S.cameraOn=true;$('placeholder').style.display='none';
-    $('pill-ai-txt').textContent='模型加载中…';$('pill-ai').className='pill warn';
     S.tracker=new PersonTracker();
     await loadPoseLandmarker();
     await loadYolo();
-    S.aiReady=true;$('pill-ai-txt').textContent='AI 就绪 (YOLO+姿态)';$('pill-ai').className='pill on';
+    S.aiReady=true;
   }catch(e){
     S.camErr=(e&&e.name==='NotAllowedError')?'摄像头权限被拒绝':((e&&e.message)||String(e));
     setBanner('warn','无法启动摄像头或加载模型：'+S.camErr+'。请在 localhost/HTTPS 下运行并允许摄像头、且联网。当前保持模拟演示。','知道了');
@@ -759,24 +687,29 @@ function computeMotion(pts,dts){const hipL=lm(pts,'hipL'),hipR=lm(pts,'hipR'),sh
 async function cameraLoop(now){if(!S.running||S.mode!=='camera')return;try{await cameraStep(now);}catch(e){}requestAnimationFrame(cameraLoop);}
 
 /* ---------- 模式切换 / 启停 ---------- */
-function switchMode(m){S.mode=m;const isDemo=m==='demo';$('btn-demo').setAttribute('aria-pressed',String(isDemo));$('btn-camera').setAttribute('aria-pressed',String(!isDemo));$('pill-mode').innerHTML=`<span class="dot"></span>${isDemo?'模拟演示':'摄像头实时'}`;$('mode-tag').textContent=isDemo?'演示':'实时';$('mode-tag').className='tag '+(isDemo?'info':'good');if(!isDemo){S.running=false;setBanner('','');startCamera().then(()=>{if(S.cameraOn)startMonitoring();});}}
+function switchMode(m){S.mode=m;const isDemo=m==='demo';$('btn-demo').setAttribute('aria-pressed',String(isDemo));$('btn-camera').setAttribute('aria-pressed',String(!isDemo));if(!isDemo){S.running=false;setBanner('','');startCamera().then(()=>{if(S.cameraOn)startMonitoring();});}}
 function startMonitoring(){if(S.mode==='camera'&&!S.cameraOn){startCamera().then(()=>{if(S.cameraOn)doStart();});return;}doStart();}
 function doStart(){if(S.running)return;S.running=true;S._lastHip=null;S._lastCam=null;S._lastPpg=0;S._lastHr=0;S.lastTs=performance.now();$('btn-start').textContent='⏸ 停止监测';$('placeholder').style.display='none';if(S.mode==='demo')requestAnimationFrame(demoLoop);else{video.play();requestAnimationFrame(cameraLoop);}}
 function stopMonitoring(){S.running=false;$('btn-start').textContent='▶ 开始监测';if(S.mode==='demo'&&!S.cameraOn)$('placeholder').style.display='grid';}
 function demoLoop(now){if(!S.running||S.mode!=='demo')return;const dt=Math.min(0.05,(now-(S.lastTs||now))/1000);S.lastTs=now;demoUpdate(dt);requestAnimationFrame(demoLoop);}
 
+/* ---------- 分析面板 ---------- */
+function openAnalyze(on){$('analyze').classList.toggle('open',on);$('btn-analyze').setAttribute('aria-pressed',String(on));}
+
 /* ---------- 事件绑定 ---------- */
-function initTabs(){const tabs=[...document.querySelectorAll('.tabs button')];tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('.tabpane').forEach(p=>{const on=p.dataset.pane===b.dataset.tab;p.classList.toggle('active',on);p.hidden=!on;});});}
+function initTabs(){const tabs=[...document.querySelectorAll('.analyze .tabs button')];tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('.analyze .tabpane').forEach(p=>{const on=p.dataset.pane===b.dataset.tab;p.classList.toggle('active',on);p.hidden=!on;});});}
 $('btn-demo').onclick=()=>{if(S.mode!=='demo'){stopMonitoring();if(video.srcObject){video.srcObject.getTracks().forEach(t=>t.stop());video.srcObject=null;}S.cameraOn=false;S.yolo.ready=false;S.poseLandmarker=null;YOLO.session=null;switchMode('demo');S.workers={demo:mkWorker('demo')};S.selected='demo';S.ppe={hat:null,vest:null,mask:null,harness:null};setBanner('','');startMonitoring();}};
 $('btn-camera').onclick=()=>{if(S.mode!=='camera')switchMode('camera');};
 $('btn-start').onclick=()=>{if(S.running)stopMonitoring();else startMonitoring();};
 $('btn-voice').onclick=()=>{voiceOn=!voiceOn;$('btn-voice').textContent=voiceOn?'🔊 语音开':'🔇 语音关';if(voiceOn)speak('语音提示已开启');};
 $('btn-single').onclick=()=>toggleSplit(false);
 $('btn-split').onclick=()=>toggleSplit(true);
-for(const b of document.querySelectorAll('[data-ratio]'))b.onclick=()=>{S.splitRatio=Number(b.dataset.ratio);applySplit();};
+for(const b of document.querySelectorAll('[data-ratio]'))b.onclick=()=>{const r=Number(b.dataset.ratio);S.splitRatio=S.splitSwapped?1-r:r;applySplit();};
 $('split-h').onclick=()=>{S.splitVertical=false;applySplit();};
 $('split-v').onclick=()=>{S.splitVertical=true;applySplit();};
 $('btn-swap').onclick=()=>{S.splitSwapped=!S.splitSwapped;S.splitRatio=1-S.splitRatio;applySplit();};
+$('btn-analyze').onclick=()=>openAnalyze(!$('analyze').classList.contains('open'));
+$('btn-analyze-close').onclick=()=>openAnalyze(false);
 divider.addEventListener('pointerdown',e=>{if(!S.split)return;divider.setPointerCapture(e.pointerId);splitEl.classList.add('dragging');const rect=splitEl.getBoundingClientRect();const move=ev=>{S.splitRatio=S.splitVertical?(ev.clientY-rect.top)/rect.height:(ev.clientX-rect.left)/rect.width;applySplit();};const up=()=>{splitEl.classList.remove('dragging');divider.removeEventListener('pointermove',move);divider.removeEventListener('pointerup',up);divider.removeEventListener('pointercancel',up);};divider.addEventListener('pointermove',move);divider.addEventListener('pointerup',up);divider.addEventListener('pointercancel',up);});
 divider.addEventListener('keydown',e=>{if(!S.split)return;if(e.key==='ArrowLeft'||e.key==='ArrowUp')S.splitRatio-=0.03;else if(e.key==='ArrowRight'||e.key==='ArrowDown')S.splitRatio+=0.03;else return;e.preventDefault();applySplit();});
 $('rehab-pick').onchange=renderRehabSteps;
