@@ -5,31 +5,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ===== 设计令牌：白色浅色主题 ===== */
 :root{
   color-scheme: light;
-  --bg:#ffffff;
-  --bg-soft:#f6f8fb;
-  --surface:#ffffff;
-  --surface-2:#f1f5f9;
-  --ink:#0f172a;
-  --ink-2:#475569;
-  --muted:#8a97a8;
-  --line:#e5eaf1;
-  --line-strong:#cbd5e1;
-  --accent:#0e7490;
-  --accent-soft:#ecfeff;
-  --accent-strong:#155e75;
-  --good:#15803d;  --good-bg:#ecfdf5;
-  --warn:#b45309;  --warn-bg:#fffbeb;
-  --danger:#dc2626; --danger-bg:#fef2f2;
-  --critical:#b91c1c;
-  --info:#0369a1;  --info-bg:#eff6ff;
+  --bg:#ffffff;--bg-soft:#f6f8fb;--surface:#ffffff;--surface-2:#f1f5f9;
+  --ink:#0f172a;--ink-2:#475569;--muted:#8a97a8;--line:#e5eaf1;--line-strong:#cbd5e1;
+  --accent:#0e7490;--accent-soft:#ecfeff;--accent-strong:#155e75;
+  --good:#15803d;--good-bg:#ecfdf5;--warn:#b45309;--warn-bg:#fffbeb;--danger:#dc2626;--danger-bg:#fef2f2;--info:#0369a1;--info-bg:#eff6ff;
   --font-display:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-body:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,monospace;
-  --radius:14px; --radius-s:9px;
-  --shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12);
+  --radius:14px;--radius-s:9px;--shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -37,7 +22,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-siz
 .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;max-width:1280px;margin:0 auto}
 h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0}
 .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-
 header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:env(safe-area-inset-top,0px);z-index:30}
 header .bar{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:17px;letter-spacing:.2px}
@@ -50,23 +34,19 @@ header .bar{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wr
 .pill.warn{border-color:#fcd34d;background:var(--warn-bg);color:var(--warn)}
 .pill.danger{border-color:#fecaca;background:var(--danger-bg);color:var(--danger)}
 .pill.accent{border-color:#a5f3fc;background:var(--accent-soft);color:var(--accent-strong)}
-
 button{font-family:var(--font-body);cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:var(--radius-s);padding:8px 13px;font-size:13px;font-weight:600;transition:background .15s,border-color .15s,transform .05s}
 button:hover{border-color:var(--accent);color:var(--accent-strong)}
 button:active{transform:translateY(1px)}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 button.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff}
-button.danger{background:var(--danger);border-color:var(--danger);color:#fff}
 button:disabled{opacity:.45;cursor:not-allowed}
 .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:var(--radius-s);overflow:hidden}
 .seg button{border:0;border-radius:0;background:var(--surface);color:var(--ink-2)}
 .seg button[aria-pressed=true]{background:var(--accent);color:#fff}
 .seg button+button{border-left:1px solid var(--line-strong)}
-
 .main{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;padding-block:16px;align-items:start}
 @media(max-width:1000px){.main{grid-template-columns:1fr}}
-
 .stage-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .stage{position:relative;aspect-ratio:16/10;background:radial-gradient(1200px 500px at 50% -10%,#f0f9ff,transparent),linear-gradient(180deg,#fbfdff,#f3f6fa);overflow:hidden;min-height:280px}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -81,7 +61,6 @@ button:disabled{opacity:.45;cursor:not-allowed}
 #banner.danger{display:flex;background:var(--danger-bg);border:1px solid #fecaca;color:var(--danger)}
 #banner.info{display:flex;background:var(--info-bg);border:1px solid #bae6fd;color:var(--info)}
 #banner button{margin-left:auto}
-
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
 .kpi{background:var(--surface);padding:12px 14px}
 .kpi small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.3px}
@@ -89,14 +68,12 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .kpi strong .unit{font-size:12px;font-weight:600;color:var(--muted)}
 .kpi span{font-size:11px;color:var(--ink-2)}
 @media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}}
-
 .panel{border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface);overflow:hidden}
 .tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto;background:var(--surface-2)}
-.tabs button{border:0;border-radius:0;background:transparent;padding:11px 12px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap;border-bottom:2px solid transparent}
+.tabs button{border:0;border-radius:0;background:transparent;padding:11px 10px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap;border-bottom:2px solid transparent}
 .tabs button[aria-selected=true]{color:var(--accent-strong);border-bottom-color:var(--accent);background:var(--surface)}
 .tabpane{display:none;padding:14px}
 .tabpane.active{display:block}
-
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);padding:12px}
 .card+.card{margin-top:10px}
 .card h3{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:7px}
@@ -111,20 +88,32 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .tag.warn{background:var(--warn-bg);color:var(--warn)}
 .tag.danger{background:var(--danger-bg);color:var(--danger)}
 .tag.info{background:var(--info-bg);color:var(--info)}
-
 .worker-chips{display:flex;gap:8px;flex-wrap:wrap}
 .worker-chip{display:inline-flex;flex-direction:column;gap:2px;align-items:flex-start;border:1px solid var(--line-strong);background:var(--surface-2);border-radius:10px;padding:7px 10px;text-align:left}
 .worker-chip b{font-size:12.5px}
 .worker-chip span{font-size:11px;color:var(--ink-2)}
 .worker-chip.sel{border-color:var(--accent);background:var(--accent-soft)}
-
 .angle-table{width:100%;border-collapse:collapse;font-size:12.5px}
 .angle-table th,.angle-table td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
 .angle-table th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.3px}
 .angle-table td.num{text-align:right;font-weight:700}
 .angle-table tr.warn td{background:var(--warn-bg)}
 .angle-table tr.danger td{background:var(--danger-bg)}
-
+.motion-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.motion-table th,.motion-table td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--line)}
+.motion-table th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.3px}
+.motion-table td.num{text-align:right;font-weight:700}
+.motion-table tr.warn td{background:var(--warn-bg)}
+.motion-table tr.danger td{background:var(--danger-bg)}
+.ppe-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ppe-item{border:1px solid var(--line);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;gap:3px}
+.ppe-item .icon{font-size:18px;line-height:1}
+.ppe-item .lbl{font-size:12px;color:var(--ink-2);font-weight:600}
+.ppe-item .st{font-size:13px;font-weight:800}
+.ppe-item.ok{border-color:#bbf7d0;background:var(--good-bg)}
+.ppe-item.bad{border-color:#fecaca;background:var(--danger-bg)}
+.ppe-item.unk{border-color:#fcd34d;background:var(--warn-bg)}
+@media(max-width:480px){.ppe-grid{grid-template-columns:1fr}}
 .disease{display:flex;flex-direction:column;gap:8px}
 .disease .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .disease .head b{font-size:14px}
@@ -139,12 +128,10 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .disease .col ul{margin:0;padding-left:16px;font-size:12px;color:var(--ink-2)}
 .disease .col ul li{margin:2px 0}
 .disease .mech{font-size:12px;color:var(--ink-2);background:var(--info-bg);border-radius:8px;padding:8px 10px}
-
 .log{max-height:220px;overflow-y:auto;margin:0;padding:0;list-style:none;font-size:12px}
 .log li{padding:7px 4px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:flex-start}
 .log li .t{color:var(--muted);font-family:var(--font-mono);font-size:11px;white-space:nowrap;flex:none}
 .log li.alert .t,.log li.alert{color:var(--danger)}
-
 .rehab-step{display:flex;gap:10px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
 .rehab-step .idx{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
 .rehab-step .idx.done{background:var(--good);color:#fff}
@@ -154,17 +141,13 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .progress-wrap{display:flex;align-items:center;gap:10px}
 .progress{flex:1;height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden}
 .progress i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--good),#4ade80);transition:width .6s}
-
 .chart-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);padding:10px}
 .chart-card canvas{width:100%;height:90px;display:block}
-
 .protocol{border-left:3px solid var(--danger);background:var(--danger-bg);border-radius:8px;padding:10px 12px}
 .protocol ol{margin:6px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-2)}
 .protocol ol li{margin:3px 0;font-weight:600}
-
 footer{padding:14px 0 26px;color:var(--muted);font-size:11.5px;line-height:1.6}
 footer b{color:var(--ink-2)}
-
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
@@ -173,13 +156,14 @@ footer b{color:var(--ink-2)}
 <div class="wrap">
 <header>
   <div class="bar">
-    <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>YOLO 安全帽 · 多人追踪 · 疾病风险 · 报告导出</small></div></div>
+    <div class="brand"><span class="mark">安</span><div>AI人体姿态与康复监测<small>YOLO 安全帽 · 多人追踪 · 运动分析 · 语音提示</small></div></div>
     <div class="head-status">
       <span class="pill accent" id="pill-mode"><span class="dot"></span>模拟演示</span>
       <span class="pill on" id="pill-ai"><span class="dot"></span><span id="pill-ai-txt">AI 就绪</span></span>
       <span class="pill" id="pill-people"><span class="dot"></span>人数 0</span>
       <span class="pill" id="pill-hr"><span class="dot"></span>心率 —</span>
       <span class="pill" id="pill-posture"><span class="dot"></span>姿态 正常</span>
+      <button id="btn-voice" class="voice-btn" type="button" title="开关语音提示">🔊 语音开</button>
       <button id="btn-report" type="button" title="导出本次监测报告">📄 导出报告</button>
       <button id="btn-csv" type="button" title="导出 CSV 数据">⬇ CSV</button>
     </div>
@@ -202,7 +186,7 @@ footer b{color:var(--ink-2)}
             <button id="btn-camera" type="button" aria-pressed="false">启动摄像头</button>
           </div>
           <button id="btn-start" class="primary" type="button">▶ 开始监测</button>
-          <span class="legend"><span><i style="background:#0e7490"></i>骨骼</span><span><i style="background:#16a34a"></i>正常</span><span><i style="background:#f59e0b"></i>注意</span><span><i style="background:#dc2626"></i>危险</span><span><i style="background:#0369a1"></i>YOLO 框</span></span>
+          <span class="legend"><span><i style="background:#0e7490"></i>人体</span><span><i style="background:#f59e0b"></i>安全帽</span><span><i style="background:#f97316"></i>背心</span><span><i style="background:#1d4ed8"></i>安全带</span><span><i style="background:#0369a1"></i>YOLO 框</span></span>
         </div>
       </div>
       <div class="kpis">
@@ -210,7 +194,7 @@ footer b{color:var(--ink-2)}
         <div class="kpi"><small>实时心率 (rPPG)</small><strong><span class="num" id="k-hr">—</span><span class="unit">bpm</span></strong><span id="k-hr-q">等待信号</span></div>
         <div class="kpi"><small>运动强度</small><strong id="k-motion">—</strong><span id="k-motion-sub">静止</span></div>
         <div class="kpi"><small>最高关节风险</small><strong id="k-risk">—</strong><span id="k-risk-sub">无</span></div>
-        <div class="kpi"><small>当前装备</small><strong id="k-ppe">—</strong><span id="k-ppe-sub">—</span></div>
+        <div class="kpi"><small>装备缺失</small><strong id="k-ppe">—</strong><span id="k-ppe-sub">—</span></div>
       </div>
     </div>
   </section>
@@ -218,6 +202,7 @@ footer b{color:var(--ink-2)}
   <aside class="panel">
     <div class="tabs" role="tablist">
       <button data-tab="angle" role="tab" aria-selected="true">关节角度</button>
+      <button data-tab="motion" role="tab" aria-selected="false">运动分析</button>
       <button data-tab="risk" role="tab" aria-selected="false">健康风险</button>
       <button data-tab="rehab" role="tab" aria-selected="false">预防·康复</button>
       <button data-tab="ppe" role="tab" aria-selected="false">穿脱检测</button>
@@ -233,11 +218,19 @@ footer b{color:var(--ink-2)}
       <div class="card">
         <h3>实时关节角度 <span class="tag info" id="angle-now-tag">—</span></h3>
         <table class="angle-table" id="angle-table"><thead><tr><th>关节</th><th>角度</th><th>状态</th></tr></thead><tbody id="angle-tbody"></tbody></table>
-        <p class="hint" style="margin-top:8px">角度由 MediaPipe 骨骼点实时计算（直立=0°，伸直=180°）。超出阈值按累计暴露时间计入疾病风险。</p>
+        <p class="hint" style="margin-top:8px">角度由 MediaPipe 骨骼点实时计算。超出阈值按累计暴露时间计入疾病风险。</p>
       </div>
       <div class="chart-card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:12.5px">心率趋势</b><small style="color:var(--muted);font-size:11px">最近 30 秒</small></div>
         <canvas id="hr-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="tabpane" data-pane="motion" hidden>
+      <div class="card">
+        <h3>实时运动分析 · 关节角度 vs 标准值 <span class="tag info">左/右 独立</span></h3>
+        <table class="motion-table"><thead><tr><th>部位</th><th>当前</th><th>标准值</th><th>差值</th><th>判定</th></tr></thead><tbody id="motion-tbody"></tbody></table>
+        <p class="hint" style="margin-top:8px">差值 = 当前角度 − 标准参考值。「大于」表示超出中立位（前倾/外展过度），「小于」表示屈曲不足（肘/膝/髋弯曲）。标准值为中立姿态参考，供对比筛查。</p>
       </div>
     </div>
 
@@ -273,9 +266,8 @@ footer b{color:var(--ink-2)}
     <div class="tabpane" data-pane="ppe" hidden>
       <div class="card">
         <h3>防护装备穿脱检测 <span class="tag" id="ppe-mode-tag">YOLO</span></h3>
-        <div class="row"><span class="k">🪖 安全帽</span><span class="v" id="ppe-hat">检测中…</span></div>
-        <div class="row"><span class="k">🦺 安全背心</span><span class="v" id="ppe-vest">检测中…</span></div>
-        <p class="hint">由 YOLO 模型直接识别「安全帽/未戴安全帽/安全背心/未穿背心」四类目标；多人时显示当前选中作业者。</p>
+        <div class="ppe-grid" id="ppe-grid"></div>
+        <p class="hint" style="margin-top:8px">安全帽/护具口罩/安全背心由 YOLO 识别；安全带无模型检测、按「高处/过顶作业」规则提示并需人工确认。多人时显示当前选中作业者。</p>
       </div>
       <div class="card">
         <h3>穿脱记录 <button class="tag info" id="btn-ppe-clear" style="border:0;background:var(--info-bg);color:var(--info)">清空</button></h3>
@@ -298,7 +290,7 @@ footer b{color:var(--ink-2)}
 
 <footer>
   本页为<b>安全·健康筛查与风险提示</b>演示工具：全部计算在本地浏览器完成，不传输影像与面部数据；疾病概率为基于姿势暴露时间的估算值、康复方案为通用健康指引，<b>不构成医学诊断或治疗建议</b>，请以医生诊断为准。<br>
-  技术栈：YOLO(onnxruntime-web) 安全帽/背心检测 · MediaPipe 多人姿态估计 · ByteTrack 式多人追踪 · rPPG 心率 · 关节角度 → 疾病风险映射 · 报告导出。摄像头与真实 AI 需在 <b>localhost 或 HTTPS</b> 下打开（需联网加载模型）。
+  技术栈：YOLO(onnxruntime-web) 安全帽/背心检测 · MediaPipe 多人姿态估计 · ByteTrack 式多人追踪 · rPPG 心率 · 关节角度 vs 标准值运动分析 · 语音提示 · 报告导出。摄像头与真实 AI 需在 localhost 或 HTTPS 下打开（需联网加载模型）。
 </footer>
 </div>
 
@@ -306,24 +298,22 @@ footer b{color:var(--ink-2)}
 
 <script>
 'use strict';
-/* =========================================================================
- * AI人体姿态与康复监测 —— 单文件实现
- * 真实 YOLO 安全帽 · 多人追踪 · 关节角度→疾病风险 · 预防/康复 · 受伤警报 · 报告导出
- * ========================================================================= */
 const $ = id => document.getElementById(id);
 
-/* ---------- 向量与角度工具 ---------- */
-const P = (a,b)=>({x:b.x-a.x,y:b.y-a.y});
-const LEN = v=>Math.hypot(v.x,v.y);
-const DOT = (a,b)=>a.x*b.x+a.y*b.y;
+/* ---------- 向量工具 ---------- */
+const P=(a,b)=>({x:b.x-a.x,y:b.y-a.y});
+const LEN=v=>Math.hypot(v.x,v.y);
+const DOT=(a,b)=>a.x*b.x+a.y*b.y;
 function ang2(a,b){const c=DOT(a,b)/((LEN(a)*LEN(b))||1);return Math.acos(Math.min(1,Math.max(-1,c)))*180/Math.PI;}
-const MID = (a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
+const MID=(a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
 function vis(p){return p && p.visibility>0.4;}
 
-/* ---------- 关节角度（33 点，同 MediaPipe 索引） ---------- */
+/* ---------- 33 点索引 ---------- */
 const IDX={nose:0,earL:7,earR:8,shL:11,shR:12,elbL:13,elbR:14,wriL:15,wriR:16,hipL:23,hipR:24,kneeL:25,kneeR:26,ankL:27,ankR:28};
 function lm(pts,name){return pts[IDX[name]];}
 function safe(p1,p2,p3){return vis(p1)&&vis(p2)&&vis(p3);}
+
+/* ---------- 关节角度（含左右独立） ---------- */
 function computeAngles(pts){
   const a={};
   const shL=lm(pts,'shL'),shR=lm(pts,'shR'),hipL=lm(pts,'hipL'),hipR=lm(pts,'hipR');
@@ -331,20 +321,23 @@ function computeAngles(pts){
   const head=(vis(lm(pts,'earL'))&&vis(lm(pts,'earR')))?MID(lm(pts,'earL'),lm(pts,'earR')):lm(pts,'nose');
   a.trunk=ang2(P(hipM,shM),{x:0,y:-1});
   a.neck=ang2(P(shM,head),{x:0,y:-1});
-  const armR=vis(shR)&&vis(lm(pts,'elbR'))?ang2(P(shR,lm(pts,'elbR')),{x:0,y:1}):null;
   const armL=vis(shL)&&vis(lm(pts,'elbL'))?ang2(P(shL,lm(pts,'elbL')),{x:0,y:1}):null;
-  a.arm=(armR!=null&&armL!=null)?(armR+armL)/2:(armR!=null?armR:armL);
-  a.elbow=safe(shR,lm(pts,'elbR'),lm(pts,'wriR'))?ang2(P(lm(pts,'elbR'),shR),P(lm(pts,'elbR'),lm(pts,'wriR'))):
-          safe(shL,lm(pts,'elbL'),lm(pts,'wriL'))?ang2(P(lm(pts,'elbL'),shL),P(lm(pts,'elbL'),lm(pts,'wriL'))):null;
-  a.hip=safe(shR,hipR,lm(pts,'kneeR'))?ang2(P(hipR,shR),P(hipR,lm(pts,'kneeR'))):
-       safe(shL,hipL,lm(pts,'kneeL'))?ang2(P(hipL,shL),P(hipL,lm(pts,'kneeL'))):null;
-  a.knee=safe(hipR,lm(pts,'kneeR'),lm(pts,'ankR'))?ang2(P(lm(pts,'kneeR'),hipR),P(lm(pts,'kneeR'),lm(pts,'ankR'))):
-         safe(hipL,lm(pts,'kneeL'),lm(pts,'ankL'))?ang2(P(lm(pts,'kneeL'),hipL),P(lm(pts,'kneeL'),lm(pts,'ankL'))):null;
+  const armR=vis(shR)&&vis(lm(pts,'elbR'))?ang2(P(shR,lm(pts,'elbR')),{x:0,y:1}):null;
+  a.armL=armL;a.armR=armR;a.arm=(armL!=null&&armR!=null)?Math.max(armL,armR):(armL!=null?armL:armR);
+  const elbL=safe(shL,lm(pts,'elbL'),lm(pts,'wriL'))?ang2(P(lm(pts,'elbL'),shL),P(lm(pts,'elbL'),lm(pts,'wriL'))):null;
+  const elbR=safe(shR,lm(pts,'elbR'),lm(pts,'wriR'))?ang2(P(lm(pts,'elbR'),shR),P(lm(pts,'elbR'),lm(pts,'wriR'))):null;
+  a.elbowL=elbL;a.elbowR=elbR;a.elbow=(elbL!=null&&elbR!=null)?Math.min(elbL,elbR):(elbL!=null?elbL:elbR);
+  const hipLv=safe(shL,hipL,lm(pts,'kneeL'))?ang2(P(hipL,shL),P(hipL,lm(pts,'kneeL'))):null;
+  const hipRv=safe(shR,hipR,lm(pts,'kneeR'))?ang2(P(hipR,shR),P(hipR,lm(pts,'kneeR'))):null;
+  a.hipL=hipLv;a.hipR=hipRv;a.hip=(hipLv!=null&&hipRv!=null)?Math.min(hipLv,hipRv):(hipLv!=null?hipLv:hipRv);
+  const kneeLv=safe(hipL,lm(pts,'kneeL'),lm(pts,'ankL'))?ang2(P(lm(pts,'kneeL'),hipL),P(lm(pts,'kneeL'),lm(pts,'ankL'))):null;
+  const kneeRv=safe(hipR,lm(pts,'kneeR'),lm(pts,'ankR'))?ang2(P(lm(pts,'kneeR'),hipR),P(lm(pts,'kneeR'),lm(pts,'ankR'))):null;
+  a.kneeL=kneeLv;a.kneeR=kneeRv;a.knee=(kneeLv!=null&&kneeRv!=null)?Math.min(kneeLv,kneeRv):(kneeLv!=null?kneeLv:kneeRv);
   a.headBelowHip=vis(head)&&vis(hipM)?head.y>hipM.y+0.02:false;
   return a;
 }
 
-/* ---------- 关节阈值与疾病知识库 ---------- */
+/* ---------- 关节阈值 + 疾病知识库 ---------- */
 const JOINTS=[
   {id:'neck',name:'颈部前倾',unit:'°',dir:'above',caution:15,danger:30,area:'颈部',disease:'颈椎病',desc:'颈肩酸痛、僵硬、头晕、上肢麻木'},
   {id:'trunk',name:'躯干前倾',unit:'°',dir:'above',caution:20,danger:45,area:'腰部',disease:'腰椎间盘突出症 / 下背痛',desc:'腰痛、下肢放射痛、麻木'},
@@ -360,76 +353,109 @@ const DISEASE={
   knee:{mech:'深蹲时髌股关节与半月板承受数倍体重负荷，长期导致软骨磨损、半月板退变。',prevent:['避免久蹲，使用矮凳/护膝','股四头肌训练','控制体重，穿减震鞋'],rehab:['股四头肌与腘绳肌强化','直腿抬高训练','低冲击有氧（游泳、骑车）','持续肿胀/交锁需就医']},
 };
 
+/* ---------- 运动分析：标准参考值 ---------- */
+const REFS=[
+  {id:'neck',name:'颈部前倾',ref:0,tol:15},
+  {id:'trunk',name:'躯干前倾',ref:0,tol:15},
+  {id:'armL',name:'左肩外展',ref:10,tol:20},
+  {id:'armR',name:'右肩外展',ref:10,tol:20},
+  {id:'elbowL',name:'左肘屈曲',ref:170,tol:25},
+  {id:'elbowR',name:'右肘屈曲',ref:170,tol:25},
+  {id:'hipL',name:'左髋屈曲',ref:180,tol:25},
+  {id:'hipR',name:'右髋屈曲',ref:180,tol:25},
+  {id:'kneeL',name:'左膝屈曲',ref:180,tol:30},
+  {id:'kneeR',name:'右膝屈曲',ref:180,tol:30},
+];
+
 /* ---------- 状态 ---------- */
 const S={
   mode:'demo',running:false,aiReady:false,selected:'demo',
-  workers:{},angles:null,risk:{},ppe:{hat:null,vest:null},
+  workers:{},angles:null,risk:{},ppe:{hat:null,vest:null,mask:null,harness:null},
   hr:{value:null,quality:'等待信号',history:[]},hrBuf:[],
   motion:0,activity:'静止',trail:[],speed:0,
   alarms:[],alarmActive:null,recovering:false,recovery:0,recoveryTotal:30,
   poseLandmarker:null,poseProvider:'',cameraOn:false,camErr:'',demoT:0,
   tracker:null,yolo:{ready:false},
 };
-function mkWorker(id){return {id,label:id==='demo'?'演示作业者':('作业者 '+id),box:null,pose:null,angles:null,exposure:{},risk:{},hat:null,vest:null,seen:0,active:true,last:0};}
+function mkWorker(id){return {id,label:id==='demo'?'演示作业者':('作业者 '+id),box:null,pose:null,angles:null,exposure:{},risk:{},hat:null,vest:null,mask:null,harness:null,seen:0,active:true,last:0};}
 function levelOf(id,deg){const j=JOINTS.find(x=>x.id===id);if(deg==null)return 'normal';return j.dir==='above'?(deg>j.danger?'danger':deg>j.caution?'warn':'normal'):(deg<j.danger?'danger':deg<j.caution?'warn':'normal');}
 function tickRiskWorker(w,dt){if(!w.angles)return;for(const j of JOINTS){const lv=levelOf(j.id,w.angles[j.id]);const e=w.exposure[j.id]=w.exposure[j.id]||0;if(lv==='danger')w.exposure[j.id]=e+dt*1.6;else if(lv==='warn')w.exposure[j.id]=e+dt*0.5;else w.exposure[j.id]=Math.max(0,e-dt*0.2);w.risk[j.id]=Math.min(100,Math.round(w.exposure[j.id]));}}
 const LV_COLOR={normal:'#16a34a',warn:'#f59e0b',danger:'#dc2626'};
+
+/* ---------- 语音提示 ---------- */
+let voiceOn=true;
+function speak(t){if(!voiceOn)return;try{if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';u.rate=1.02;u.pitch=1;const vs=window.speechSynthesis.getVoices();const z=vs.find(v=>/zh|cmn|chinese/i.test(v.lang));if(z)u.voice=z;window.speechSynthesis.speak(u);}catch(e){}}
+const _lastVoice={};
+function vSay(key,ms,t){const n=Date.now();if(n-(_lastVoice[key]||0)<ms)return;_lastVoice[key]=n;speak(t);}
+function voiceCheck(){
+  const a=S.angles||{};
+  let worst=null;
+  for(const j of JOINTS){if(levelOf(j.id,a[j.id])==='danger'){worst=j;break;}}
+  if(worst)vSay('posture',18000,'姿态危险：'+worst.disease+'风险，请立即调整姿势，注意'+worst.area+'保护');
+  const p=S.ppe;
+  if(p.hat===false)vSay('hat',25000,'未检测到安全帽，请立即佩戴安全帽');
+  if(p.vest===false)vSay('vest',25000,'未检测到安全背心，请立即穿戴安全背心');
+  if(p.mask===false)vSay('mask',25000,'未检测到口罩或护具，请立即佩戴');
+  if(a.arm!=null&&a.arm>80)vSay('harness',60000,'检测到高处或过顶作业，请确认已系好安全带');
+}
 
 /* ---------- 主画布 ---------- */
 const stage=$('stage'),canvas=$('canvas'),ctx=canvas.getContext('2d');
 function fitCanvas(){const dpr=Math.min(2,window.devicePixelRatio||1);const r=stage.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height};}
 let CW=0,CH=0;
 window.addEventListener('resize',()=>{const s=fitCanvas();CW=s.w;CH=s.h;});
-
-/* ---------- UI 节流 ---------- */
 let lastUI=0;
-function throttledUI(){const now=performance.now();if(now-lastUI<250)return;lastUI=now;buildAngleTable();buildRisk();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();}
+function throttledUI(){const now=performance.now();if(now-lastUI<250)return;lastUI=now;buildAngleTable();buildMotionAnalysis();buildRisk();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();}
 
-/* ---------- 绘制骨骼（演示单人） ---------- */
+/* ---------- 人体 + PPE 绘制 ---------- */
 const BONE=[['shL','shR'],['shL','elbL'],['elbL','wriL'],['shR','elbR'],['elbR','wriR'],['shL','hipL'],['shR','hipR'],['hipL','hipR'],['hipL','kneeL'],['kneeL','ankL'],['hipR','kneeR'],['kneeR','ankR']];
-function drawPose(pts,angles,selected){
+function drawPPE(headC,headW,shL,shR,hipL,hipR,ppe){
+  if(ppe.hat===true&&headC){const r=Math.max(10,headW*0.8);ctx.beginPath();ctx.arc(headC.x,headC.y-headW*0.35,r,Math.PI,0);ctx.closePath();ctx.fillStyle='#f59e0b';ctx.fill();ctx.fillStyle='#b45309';ctx.fillRect(headC.x-r*0.9,headC.y-headW*0.32,r*1.8,3);}
+  if(ppe.vest===true&&shL&&shR&&hipL&&hipR){const e=10;ctx.beginPath();ctx.moveTo(shL.x-e,shL.y);ctx.lineTo(shR.x+e,shR.y);ctx.lineTo(hipR.x+e,hipR.y);ctx.lineTo(hipL.x-e,hipL.y);ctx.closePath();ctx.fillStyle='rgba(249,115,22,.78)';ctx.fill();ctx.strokeStyle='#ea580c';ctx.lineWidth=1.5;ctx.stroke();const my=(shL.y+shR.y+hipL.y+hipR.y)/4;ctx.strokeStyle='rgba(255,255,255,.9)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(shL.x-e,my);ctx.lineTo(shR.x+e,my);ctx.stroke();}
+  if(ppe.harness===true&&shL&&shR&&hipL&&hipR){const cx=(shL.x+shR.x+hipL.x+hipR.x)/4;ctx.strokeStyle='#1d4ed8';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(shL.x,shL.y);ctx.lineTo(cx,hipL.y);ctx.lineTo(shR.x,shR.y);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,shL.y);ctx.lineTo(cx,hipL.y);ctx.stroke();}
+}
+function drawPose(pts,angles,selected,ppe){
   const map=p=>({x:p.x*CW,y:p.y*CH});
   const P2=n=>{const p=lm(pts,n);return p?map(p):null;};
   const bonePts=[];for(const[a,b]of BONE){const pa=P2(a),pb=P2(b);if(pa&&pb)bonePts.push([pa,pb]);}
-  const nose=P2('nose'),earL=P2('earL'),earR=P2('earR');
+  const nose=P2('nose'),earL=P2('earL'),earR=P2('earR'),shL=P2('shL'),shR=P2('shR'),hipL=P2('hipL'),hipR=P2('hipR');
   const headC=nose||earL||earR;const headW=(earL&&earR)?Math.abs(earR.x-earL.x):CW*0.06;
-  if(headC){ctx.beginPath();ctx.arc(headC.x,headC.y-headW*0.2,Math.max(10,headW*0.55),0,Math.PI*2);ctx.fillStyle='rgba(14,116,144,.14)';ctx.fill();ctx.strokeStyle=selected?'#0e7490':'#94a3b8';ctx.lineWidth=2;ctx.stroke();}
   const line=selected?'#0e7490':'#94a3b8';
-  for(const[pa,pb]of bonePts){ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.strokeStyle=line;ctx.lineWidth=3;ctx.lineCap='round';ctx.stroke();}
+  if(headC){ctx.beginPath();ctx.arc(headC.x,headC.y-headW*0.2,Math.max(9,headW*0.55),0,Math.PI*2);ctx.fillStyle=selected?'rgba(14,116,144,.16)':'rgba(100,116,139,.13)';ctx.fill();ctx.strokeStyle=line;ctx.lineWidth=2.5;ctx.stroke();}
+  if(selected&&ppe)drawPPE(headC,headW,shL,shR,hipL,hipR,ppe);
+  for(const[pa,pb]of bonePts){ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.strokeStyle=line;ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();}
   for(const[pa,pb]of bonePts)for(const p of[pa,pb]){ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle=line;ctx.lineWidth=2;ctx.stroke();}
   if(selected&&angles){
     const labels=[{id:'neck',pt:P2('nose')||P2('earR')},{id:'trunk',pt:(P2('shL')&&P2('shR'))?map(MID(lm(pts,'shL'),lm(pts,'shR'))):null},{id:'arm',pt:P2('elbR')},{id:'elbow',pt:P2('elbR')},{id:'knee',pt:P2('kneeR')}];
     for(const L of labels){if(!L.pt||angles[L.id]==null)continue;const col=LV_COLOR[levelOf(L.id,angles[L.id])];ctx.fillStyle=col;ctx.font='700 12px sans-serif';ctx.textAlign='center';const nm=JOINTS.find(x=>x.id===L.id).name.slice(0,2);ctx.fillText(nm+angles[L.id].toFixed(0)+'°',L.pt.x,L.pt.y-10);}
   }
 }
-function drawScene(pts,angles){const s=fitCanvas();CW=s.w;CH=s.h;ctx.clearRect(0,0,CW,CH);if(S.trail.length>1){ctx.beginPath();S.trail.forEach((p,i)=>{i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y);});ctx.strokeStyle='rgba(245,158,11,.35)';ctx.lineWidth=2;ctx.lineCap='round';ctx.stroke();}drawPose(pts,angles,true);}
+function drawScene(pts,angles,ppe){const s=fitCanvas();CW=s.w;CH=s.h;ctx.clearRect(0,0,CW,CH);if(S.trail.length>1){ctx.beginPath();S.trail.forEach((p,i)=>{i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y);});ctx.strokeStyle='rgba(245,158,11,.35)';ctx.lineWidth=2;ctx.lineCap='round';ctx.stroke();}drawPose(pts,angles,true,ppe);}
 
-/* ---------- 摄像头场景：YOLO 框 + 多人骨骼 ---------- */
+/* ---------- 摄像头场景 ---------- */
 function drawCameraScene(dets,tracks){
   const s=fitCanvas();CW=s.w;CH=s.h;ctx.clearRect(0,0,CW,CH);
-  const vw=S._vw||1280,vh=S._vh||720;
-  const scale=Math.min(CW/vw,CH/vh);const ox=(CW-vw*scale)/2,oy=(CH-vh*scale)/2;
+  const vw=S._vw||1280,vh=S._vh||720;const scale=Math.min(CW/vw,CH/vh);const ox=(CW-vw*scale)/2,oy=(CH-vh*scale)/2;
   const px=(x,y)=>[ox+x*scale,oy+y*scale];
-  // YOLO 装备框
   for(const d of dets){if(d.name==='Person')continue;const col=d.name.startsWith('NO')?'#dc2626':'#16a34a';const[x1,y1]=px(d.box[0],d.box[1]);const[x2,y2]=px(d.box[2],d.box[3]);ctx.strokeStyle=col;ctx.lineWidth=2;ctx.setLineDash([4,3]);ctx.strokeRect(x1,y1,x2-x1,y2-y1);ctx.setLineDash([]);ctx.fillStyle=col;ctx.font='11px sans-serif';ctx.fillText(d.name.replace('NO-','未'),x1,y1-4);}
-  // 人员框 + 骨骼
   for(const t of tracks){
     const w=S.workers['#'+t.id];const sel=w&&w.id===S.selected;
     const[x1,y1]=px(t.box[0],t.box[1]);const[x2,y2]=px(t.box[2],t.box[3]);
     ctx.strokeStyle=sel?'#0e7490':'#64748b';ctx.lineWidth=sel?2.5:1.5;ctx.strokeRect(x1,y1,x2-x1,y2-y1);
     const tag=(w?(w.hat===true?'🪖':w.hat===false?'🚫':'')+(w.vest===true?'🦺':w.vest===false?'🚫':''):'');
     ctx.fillStyle=sel?'#0e7490':'#64748b';ctx.font='700 12px sans-serif';ctx.fillText('#'+t.id+' '+tag,x1,y1-4);
-    if(t.pose)drawPose(t.pose,w&&w.angles,sel);
+    if(t.pose)drawPose(t.pose,w&&w.angles,sel,sel&&w?{hat:w.hat,vest:w.vest,mask:w.mask,harness:w.harness}:null);
   }
 }
 
-/* ---------- 角度面板 ---------- */
+/* ---------- 关节角度面板 ---------- */
 function buildAngleTable(){const tb=$('angle-tbody');tb.innerHTML='';const a=S.angles||{};for(const j of JOINTS){const deg=a[j.id];const lv=levelOf(j.id,deg);const tr=document.createElement('tr');if(lv!=='normal')tr.className=lv;const tag=lv==='danger'?'危险':lv==='warn'?'注意':'正常';const cls=lv==='danger'?'danger':lv==='warn'?'warn':'good';tr.innerHTML=`<td>${j.name}</td><td class="num">${deg==null?'—':deg.toFixed(0)}${j.unit}</td><td><span class="tag ${cls}">${tag}</span></td>`;tb.appendChild(tr);}}
+function buildMotionAnalysis(){const tb=$('motion-tbody');tb.innerHTML='';const a=S.angles||{};for(const r of REFS){const cur=a[r.id];const diff=(cur==null)?null:(cur-r.ref);let st,cls;if(cur==null){st='—';cls='info';}else if(diff>r.tol){st='↑ 大于标准 +'+diff.toFixed(0)+'°';cls='warn';}else if(diff<-r.tol){st='↓ 小于标准 '+diff.toFixed(0)+'°';cls='warn';}else{st='≈ 正常';cls='good';}const tr=document.createElement('tr');if(cls==='warn')tr.className='warn';tr.innerHTML=`<td>${r.name}</td><td class="num">${cur==null?'—':cur.toFixed(0)}°</td><td class="num">${r.ref}°</td><td class="num">${diff==null?'—':(diff>0?'+':'')+diff.toFixed(0)+'°'}</td><td><span class="tag ${cls}">${st}</span></td>`;tb.appendChild(tr);}}
 function buildRisk(){const box=$('risk-list');box.innerHTML='';const a=S.angles||{};for(const j of JOINTS){const deg=a[j.id];const lv=levelOf(j.id,deg);const r=S.risk[j.id]||0;const d=DISEASE[j.id];const prob=Math.round(r*0.6);const riskLv=r<20?'低':r<45?'中低':r<70?'中高':'高';const barCol=r<20?'#16a34a':r<45?'#f59e0b':r<70?'#f97316':'#dc2626';const card=document.createElement('div');card.className='card disease';card.innerHTML=`<div class="head"><b>${j.area} · ${j.disease}</b><span class="tag ${lv==='danger'?'danger':lv==='warn'?'warn':'good'}">${deg==null?'—':deg.toFixed(0)}${j.unit} · ${lv==='danger'?'危险':lv==='warn'?'注意':'正常'}</span></div><div class="prob">风险指数 <b>${r}</b>/100（${riskLv}）· 长期保持该姿势，患病风险较中立姿势升高约 <b>+${prob}%</b>（估算）</div><div class="riskbar"><i style="width:${r}%;background:${barCol}"></i></div><div class="mech"><b>机制：</b>${d.mech}　<b>常见表现：</b>${j.desc}</div><div class="cols"><div class="col"><b>🛡 预防</b><ul>${d.prevent.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="col"><b>💪 康复</b><ul>${d.rehab.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>`;box.appendChild(card);}}
-function buildWorkers(){const box=$('worker-chips');const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('track-count').textContent=active.length+' 人';if(!active.length){box.innerHTML='<span class="hint">未检测到作业者</span>';return;}box.innerHTML='';for(const w of active){const chip=document.createElement('button');chip.className='worker-chip'+(w.id===S.selected?' sel':'');const hat=w.hat,vest=w.vest;chip.innerHTML=`<b>${w.label}</b><span>${hat===null?'帽·—':hat?'🪖 已戴':'🚫 未戴'}　${vest===null?'背心·—':vest?'🦺 已穿':'🚫 未穿'}</span>`;chip.onclick=()=>{S.selected=w.id;S.angles=w.angles;S.risk=w.risk;S.ppe={hat:w.hat,vest:w.vest};buildWorkers();};box.appendChild(chip);}}
-function renderPpeTab(){const hat=S.ppe.hat,vest=S.ppe.vest;$('ppe-hat').innerHTML=hat==null?'检测中…':hat?'✅ 已穿戴':'❌ 未穿戴';$('ppe-vest').innerHTML=vest==null?'检测中…':vest?'✅ 已穿戴':'❌ 未穿戴';$('ppe-mode-tag').textContent=S.mode==='camera'?'YOLO 实时':'模拟演示';}
+function buildWorkers(){const box=$('worker-chips');const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('track-count').textContent=active.length+' 人';if(!active.length){box.innerHTML='<span class="hint">未检测到作业者</span>';return;}box.innerHTML='';for(const w of active){const chip=document.createElement('button');chip.className='worker-chip'+(w.id===S.selected?' sel':'');const s=(w.hat===true?'🪖':w.hat===false?'🚫帽':'')+(w.vest===true?'🦺':w.vest===false?'🚫背心':'')+(w.mask===false?'😷':'');chip.innerHTML=`<b>${w.label}</b><span>${s||'装备·—'}</span>`;chip.onclick=()=>{S.selected=w.id;S.angles=w.angles;S.risk=w.risk;S.ppe={hat:w.hat,vest:w.vest,mask:w.mask,harness:w.harness};buildWorkers();};box.appendChild(chip);}}
+function renderPpeTab(){const p=S.ppe;const items=[{k:'hat',icon:'🪖',lbl:'安全帽'},{k:'mask',icon:'😷',lbl:'护具/口罩'},{k:'vest',icon:'🦺',lbl:'安全背心'},{k:'harness',icon:'🪢',lbl:'安全带'}];const box=$('ppe-grid');box.innerHTML=items.map(it=>{const v=p[it.k];let st,cls;if(v===true){st='✅ 已穿戴';cls='ok';}else if(v===false){st='❌ 未穿戴';cls='bad';}else{st=(it.k==='harness')?'⚠ 需确认':'检测中…';cls='unk';}return`<div class="ppe-item ${cls}"><span class="icon">${it.icon}</span><span class="lbl">${it.lbl}</span><span class="st">${st}</span></div>`;}).join('');$('ppe-mode-tag').textContent=S.mode==='camera'?'YOLO 实时':'模拟演示';}
 
-/* ---------- 预防清单 + 康复 ---------- */
+/* ---------- 预防 + 康复 ---------- */
 function buildPrevent(){const box=$('prevent-list');box.innerHTML='';const all=new Set();for(const j of JOINTS)DISEASE[j.id].prevent.forEach(x=>all.add(x));[...all].forEach(x=>{const li=document.createElement('li');li.textContent=x;box.appendChild(li);});}
 function buildRehab(){const pick=$('rehab-pick');pick.innerHTML='';for(const j of JOINTS){const o=document.createElement('option');o.value=j.id;o.textContent=j.area+' · '+j.disease;pick.appendChild(o);}renderRehabSteps();}
 function renderRehabSteps(){const box=$('rehab-steps');const id=$('rehab-pick').value;const d=DISEASE[id];box.innerHTML=d.rehab.map((x,i)=>`<div class="rehab-step" data-i="${i}"><span class="idx">${i+1}</span><div class="body"><b>${x.split('（')[0]}</b><p>${x}</p></div></div>`).join('');}
@@ -439,17 +465,17 @@ function nowStr(){const d=new Date();return d.toTimeString().slice(0,8);}
 function logList(el,items,empty){if(!items.length){el.innerHTML=`<li><span class="t">--</span>${empty}</li>`;return;}el.innerHTML=items.slice().reverse().slice(0,40).map(it=>`<li class="${it.cls||''}"><span class="t">${it.t}</span>${it.txt}</li>`).join('');}
 function addPpe(kind,on){S.ppeLog.push({t:nowStr(),txt:(on?'✅ 已穿戴 ':'❌ 已脱下 ')+kind,cls:''});logList($('ppe-log'),S.ppeLog,'暂无记录');}
 function addAlarm(kind,sev){const cls=sev==='danger'?'alert':'';S.alarms.push({t:nowStr(),txt:kind,cls});logList($('alarm-log'),S.alarms,'暂无警报');}
-function setWorkerPpe(w,hat,vest){if(hat!==null&&w.hat!==null&&hat!==w.hat)addPpe(w.label+' · 安全帽',hat);if(vest!==null&&w.vest!==null&&vest!==w.vest)addPpe(w.label+' · 安全背心',vest);if(hat!==null)w.hat=hat;if(vest!==null)w.vest=vest;}
+function setWorkerPpe(w,ppe){const names={hat:'安全帽',vest:'安全背心',mask:'护具/口罩',harness:'安全带'};for(const k in ppe){const v=ppe[k];if(v===undefined)continue;const old=w[k];if(v!==null&&old!==null&&v!==old){addPpe(w.label+' · '+names[k],v);if(v===false)speak(w.label+' '+names[k]+'未穿戴，请立即佩戴');}w[k]=v;}}
 
-/* ---------- 警报 + 康复恢复 ---------- */
+/* ---------- 警报 + 康复 ---------- */
 function setBanner(sev,text,btnLabel){const b=$('banner');if(!text){b.className='idle';b.style.display='none';return;}b.className=sev;b.style.display='flex';$('banner-text').textContent=text;const bb=$('banner-btn');if(btnLabel){bb.hidden=false;bb.textContent=btnLabel;bb.onclick=()=>setBanner('','');}else bb.hidden=true;}
 let beepCtx=null;
 function beep(freq,dur){try{if(!beepCtx)beepCtx=new(window.AudioContext||window.webkitAudioContext)();const o=beepCtx.createOscillator(),g=beepCtx.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=0.12;o.connect(g);g.connect(beepCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.001,beepCtx.currentTime+dur);o.stop(beepCtx.currentTime+dur);}catch(e){}}
-function triggerFall(){if(S.alarmActive)return;S.alarmActive={type:'fall',t:Date.now()};addAlarm('🚨 跌倒/受伤警报：检测到身体倒地','danger');setBanner('danger','🚨 受伤警报：检测到跌倒/倒地，请立即响应','知道了');$('alarm-tag').textContent='跌倒';$('alarm-tag').className='tag danger';beep(880,0.6);if(navigator.vibrate)try{navigator.vibrate([300,100,300]);}catch(e){}startRecovery();}
+function triggerFall(){if(S.alarmActive)return;S.alarmActive={type:'fall',t:Date.now()};addAlarm('🚨 跌倒/受伤警报：检测到身体倒地','danger');setBanner('danger','🚨 受伤警报：检测到跌倒/倒地，请立即响应','知道了');$('alarm-tag').textContent='跌倒';$('alarm-tag').className='tag danger';beep(880,0.6);speak('警报：检测到跌倒，请立即响应');if(navigator.vibrate)try{navigator.vibrate([300,100,300]);}catch(e){}startRecovery();}
 function startRecovery(){S.recovering=true;S.recovery=0;S.recoveryTotal=30;$('recovery-tag').textContent='恢复中';$('recovery-tag').className='tag warn';$('recovery-desc').textContent='已进入康复恢复流程：停止作业 → 确认无危险 → 保持中立姿势恢复 → 完成后方可返岗。';addAlarm('🧑‍⚕️ 已启动康复恢复流程（需保持中立姿势 30 秒）','');}
-function tickRecovery(dt){if(!S.recovering)return;const a=S.angles||{};const neutral=(a.trunk!=null&&a.trunk<25)&&(a.neck==null||a.neck<25)&&(a.arm==null||a.arm<40)&&!a.headBelowHip;if(neutral)S.recovery=Math.min(S.recoveryTotal,S.recovery+dt);const pct=Math.round(S.recovery/S.recoveryTotal*100);$('recovery-bar').style.width=pct+'%';$('recovery-pct').textContent=pct+'%';if(S.recovery>=S.recoveryTotal){S.recovering=false;S.alarmActive=null;addAlarm('✅ 康复恢复完成，可返岗','');$('recovery-tag').textContent='已完成';$('recovery-tag').className='tag good';$('alarm-tag').textContent='无';$('alarm-tag').className='tag good';setBanner('','');}}
+function tickRecovery(dt){if(!S.recovering)return;const a=S.angles||{};const neutral=(a.trunk!=null&&a.trunk<25)&&(a.neck==null||a.neck<25)&&(a.arm==null||a.arm<40)&&!a.headBelowHip;if(neutral)S.recovery=Math.min(S.recoveryTotal,S.recovery+dt);const pct=Math.round(S.recovery/S.recoveryTotal*100);$('recovery-bar').style.width=pct+'%';$('recovery-pct').textContent=pct+'%';if(S.recovery>=S.recoveryTotal){S.recovering=false;S.alarmActive=null;addAlarm('✅ 康复恢复完成，可返岗','');$('recovery-tag').textContent='已完成';$('recovery-tag').className='tag good';$('alarm-tag').textContent='无';$('alarm-tag').className='tag good';setBanner('','');speak('康复恢复完成，可以返岗');}}
 
-/* ---------- rPPG 心率 ---------- */
+/* ---------- rPPG ---------- */
 function fft(re,im){const n=re.length;for(let i=1,j=0;i<n;i++){let bit=n>>1;for(;j&bit;bit>>=1)j^=bit;j^=bit;if(i<j){[re[i],re[j]]=[re[j],re[i]];[im[i],im[j]]=[im[j],im[i]];}}for(let len=2;len<=n;len<<=1){const ang=-2*Math.PI/len,wr=Math.cos(ang),wi=Math.sin(ang);for(let i=0;i<n;i+=len){let cr=1,ci=0;for(let k=0;k<len/2;k++){const ur=re[i+k],ui=im[i+k];const vr=re[i+k+len/2]*cr-im[i+k+len/2]*ci;const vi=re[i+k+len/2]*ci+im[i+k+len/2]*cr;re[i+k]=ur+vr;im[i+k]=ui+vi;re[i+k+len/2]=ur-vr;im[i+k+len/2]=ui-vi;const ncr=cr*wr-ci*wi;ci=cr*wi+ci*wr;cr=ncr;}}}return{re,im};}
 function interp(buf,t){if(t<=buf[0].t)return buf[0].g;if(t>=buf[buf.length-1].t)return buf[buf.length-1].g;let lo=0,hi=buf.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(buf[m].t<=t)lo=m;else hi=m;}const a=buf[lo],b=buf[hi],k=(t-a.t)/((b.t-a.t)||1);return a.g+(b.g-a.g)*k;}
 function processHR(){const buf=S.hrBuf;if(buf.length<50)return;const N=256,t0=buf[0].t,t1=buf[buf.length-1].t;const span=Math.max(1,(t1-t0)/1000);const sig=new Float64Array(N);for(let i=0;i<N;i++)sig[i]=interp(buf,t0+(t1-t0)*i/(N-1));let sx=0,sy=0,sxx=0,sxy=0;for(let i=0;i<N;i++){sx+=i;sy+=sig[i];sxx+=i*i;sxy+=i*sig[i];}const a=(N*sxy-sx*sy)/(N*sxx-sx*sx),b=(sy-a*sx)/N;for(let i=0;i<N;i++)sig[i]-=(a*i+b);for(let i=0;i<N;i++)sig[i]*=(0.54-0.46*Math.cos(2*Math.PI*i/(N-1)));const M=512,re=new Float64Array(M),im=new Float64Array(M);for(let i=0;i<N;i++)re[i]=sig[i];fft(re,im);const fs=N/span;let best=0,bi=-1;for(let i=1;i<M/2;i++){const f=i*fs/M;if(f<0.75||f>3.5)continue;const m=Math.hypot(re[i],im[i]);if(m>best){best=m;bi=i;}}if(bi<0)return;const peak=bi*fs/M;let sum=0,cnt=0;for(let i=1;i<M/2;i++){const f=i*fs/M;if(f>=0.5&&f<=4){sum+=Math.hypot(re[i],im[i]);cnt++;}}const snr=best/((sum/cnt)||1);const bpm=peak*60;if(bpm>=45&&bpm<=200&&snr>1.6){S.hr.value=Math.round(S.hr.value?S.hr.value*0.6+bpm*0.4:bpm);S.hr.quality=snr>2.6?'信号良好':'信号一般';S.hr.history.push(S.hr.value);if(S.hr.history.length>60)S.hr.history.shift();}else S.hr.quality='信号弱 · 请保持面部光线充足、稳定';}
@@ -460,7 +486,7 @@ function samplePpg(pts){const shL=lm(pts,'shL'),shR=lm(pts,'shR'),earL=lm(pts,'e
 function drawHRChart(){const cv=$('hr-chart');const dpr=Math.min(2,window.devicePixelRatio||1);const w=cv.clientWidth||300,h=90;cv.width=w*dpr;cv.height=h*dpr;const c=cv.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);const hist=S.hr.history;c.strokeStyle='var(--line)';c.lineWidth=1;for(let i=1;i<4;i++){c.beginPath();c.moveTo(0,h*i/4);c.lineTo(w,h*i/4);c.stroke();}if(hist.length<2){c.fillStyle='var(--muted)';c.font='11px sans-serif';c.fillText('等待心率信号…',10,20);return;}const min=40,max=200;const map=v=>h-(Math.min(max,Math.max(min,v))-min)/(max-min)*h;c.beginPath();hist.forEach((v,i)=>{const x=i/(hist.length-1)*w,y=map(v);i?c.lineTo(x,y):c.moveTo(x,y);});c.strokeStyle='#0e7490';c.lineWidth=2;c.stroke();c.lineTo(w,h);c.lineTo(0,h);c.closePath();c.fillStyle='rgba(14,116,144,.08)';c.fill();const last=hist[hist.length-1];c.fillStyle='#0e7490';c.font='700 12px sans-serif';c.fillText(last+' bpm',w-70,map(last)-6);}
 
 /* ---------- KPI ---------- */
-function refreshKpi(){const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('k-people').textContent=active.length;$('k-people-sub').textContent=S.mode==='camera'?'YOLO 检测':'演示';$('k-hr').textContent=S.hr.value!=null?S.hr.value:'—';$('k-hr-q').textContent=S.hr.quality;$('k-motion').textContent=S.motion+'%';$('k-motion-sub').textContent=S.activity;let worst=null,wr=0;for(const j of JOINTS){if((S.risk[j.id]||0)>wr){wr=S.risk[j.id];worst=j;}}$('k-risk').textContent=worst?worst.disease:'—';$('k-risk-sub').textContent=worst?`风险 ${wr}/100`:'无';const hat=S.ppe.hat,vest=S.ppe.vest;$('k-ppe').textContent=hat==null&&vest==null?'—':`帽${hat?'✓':'✗'} 背心${vest?'✓':'✗'}`;$('k-ppe-sub').textContent=hat==null&&vest==null?'—':(hat&&vest?'装备齐全':'存在未穿戴');$('pill-people').innerHTML=`<span class="dot"></span>人数 ${active.length}`;$('pill-hr').innerHTML=`<span class="dot"></span>心率 ${S.hr.value!=null?S.hr.value:'—'} bpm`;let worstLv='normal';for(const j of JOINTS){const lv=levelOf(j.id,S.angles&&S.angles[j.id]);if(lv==='danger'){worstLv='danger';break;}if(lv==='warn')worstLv='warn';}const pp=$('pill-posture');pp.className='pill '+(worstLv==='danger'?'danger':worstLv==='warn'?'warn':'on');pp.innerHTML=`<span class="dot"></span>姿态 ${worstLv==='danger'?'危险':worstLv==='warn'?'注意':'正常'}`;$('angle-now-tag').textContent=worstLv==='danger'?'存在危险角度':worstLv==='warn'?'存在注意角度':'全部正常';}
+function refreshKpi(){const active=Object.values(S.workers).filter(w=>w.active||w.id==='demo');$('k-people').textContent=active.length;$('k-people-sub').textContent=S.mode==='camera'?'YOLO 检测':'演示';$('k-hr').textContent=S.hr.value!=null?S.hr.value:'—';$('k-hr-q').textContent=S.hr.quality;$('k-motion').textContent=S.motion+'%';$('k-motion-sub').textContent=S.activity;let worst=null,wr=0;for(const j of JOINTS){if((S.risk[j.id]||0)>wr){wr=S.risk[j.id];worst=j;}}$('k-risk').textContent=worst?worst.disease:'—';$('k-risk-sub').textContent=worst?`风险 ${wr}/100`:'无';const p=S.ppe;const miss=[];if(p.hat===false)miss.push('帽');if(p.vest===false)miss.push('背心');if(p.mask===false)miss.push('口罩');if(p.harness===false)miss.push('安全带');$('k-ppe').textContent=miss.length?miss.join('、'):'齐';$('k-ppe-sub').textContent=miss.length?'缺失 '+miss.length+' 项':'装备齐全';$('pill-people').innerHTML=`<span class="dot"></span>人数 ${active.length}`;$('pill-hr').innerHTML=`<span class="dot"></span>心率 ${S.hr.value!=null?S.hr.value:'—'} bpm`;let worstLv='normal';for(const j of JOINTS){const lv=levelOf(j.id,S.angles&&S.angles[j.id]);if(lv==='danger'){worstLv='danger';break;}if(lv==='warn')worstLv='warn';}const pp=$('pill-posture');pp.className='pill '+(worstLv==='danger'?'danger':worstLv==='warn'?'warn':'on');pp.innerHTML=`<span class="dot"></span>姿态 ${worstLv==='danger'?'危险':worstLv==='warn'?'注意':'正常'}`;$('angle-now-tag').textContent=worstLv==='danger'?'存在危险角度':worstLv==='warn'?'存在注意角度':'全部正常';}
 
 /* =========================================================================
  * 模拟演示
@@ -482,19 +508,20 @@ function demoUpdate(dt){
   const pts=poseToPoints(pose);
   const w=S.workers.demo=S.workers.demo||mkWorker('demo');
   w.angles=computeAngles(pts);w.pose=pts;w.active=true;
-  const cycle=Math.floor(S.demoT/9)%4;setWorkerPpe(w,cycle<3,cycle<2);
+  const cycle=Math.floor(S.demoT/9)%4;
+  setWorkerPpe(w,{hat:cycle<3,vest:cycle<2,mask:cycle<2,harness:cycle<3});
   let target=name==='squat'||name==='bend'?88:name==='overhead'?84:name==='fall'?128:72;target+=Math.sin(S.demoT*0.5)*3+Math.sin(S.demoT*0.13)*2;
   S.hr.value=Math.round(S.hr.value?S.hr.value*0.8+target*0.2:target);S.hr.quality='演示信号';S.hr.history.push(S.hr.value);if(S.hr.history.length>60)S.hr.history.shift();
   S.motion=name==='stand'?6:name==='fall'?0:55;S.activity=name==='stand'||name==='fall'?'静止':'中度';
   if(name==='fall'&&phase<0.9&&!S.alarmActive)triggerFall();
   tickRiskWorker(w,dt);tickRecovery(dt);
-  S.selected='demo';S.angles=w.angles;S.risk=w.risk;S.ppe={hat:w.hat,vest:w.vest};
-  drawScene(pts,w.angles);
+  S.selected='demo';S.angles=w.angles;S.risk=w.risk;S.ppe={hat:w.hat,vest:w.vest,mask:w.mask,harness:w.harness};
+  drawScene(pts,w.angles,S.ppe);
   throttledUI();
 }
 
 /* =========================================================================
- * 真实摄像头：YOLO 安全帽 + 多人姿态 + ByteTrack 式追踪 + rPPG
+ * 真实摄像头：YOLO + 多人 + 追踪 + rPPG
  * ========================================================================= */
 const YOLO={labels:['Hardhat','Mask','NO-Hardhat','NO-Mask','NO-Safety Vest','Person','Safety Cone','Safety Vest','Machinery','Vehicle'],url:'https://shinek-wansuk-ai-safety.vercel.app/models/ppe-yolo26.onnx',session:null};
 function iou(a,b){const l=Math.max(a[0],b[0]),t=Math.max(a[1],b[1]),r=Math.min(a[2],b[2]),bm=Math.min(a[3],b[3]);const inter=Math.max(0,r-l)*Math.max(0,bm-t);return inter/Math.max(1e-9,(a[2]-a[0])*(a[3]-a[1])+(b[2]-b[0])*(b[3]-b[1])-inter);}
@@ -519,7 +546,7 @@ class PersonTracker{
   }
 }
 function poseHipPx(p,vw,vh){const hl=p[23],hr=p[24];if(!hl||!hr)return null;return{x:(hl.x+hr.x)/2*vw,y:(hl.y+hr.y)/2*vh};}
-function ppeForPerson(box,dets){let hat=null,vest=null;for(const d of dets){const cxp=(d.box[0]+d.box[2])/2,cyp=(d.box[1]+d.box[3])/2;if(cxp<box[0]||cxp>box[2]||cyp<box[1]||cyp>box[3])continue;if(d.name==='NO-Hardhat')hat=false;else if(d.name==='Hardhat')hat=true;else if(d.name==='NO-Safety Vest')vest=false;else if(d.name==='Safety Vest')vest=true;}return{hat,vest};}
+function ppeForPerson(box,dets){let hat=null,vest=null,mask=null;for(const d of dets){const cxp=(d.box[0]+d.box[2])/2,cyp=(d.box[1]+d.box[3])/2;if(cxp<box[0]||cxp>box[2]||cyp<box[1]||cyp>box[3])continue;if(d.name==='NO-Hardhat')hat=false;else if(d.name==='Hardhat')hat=true;else if(d.name==='NO-Safety Vest')vest=false;else if(d.name==='Safety Vest')vest=true;else if(d.name==='NO-Mask')mask=false;else if(d.name==='Mask')mask=true;}return{hat,vest,mask,harness:null};}
 
 async function loadOrt(){if(window.ort)return;await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.webgpu.min.js';s.onload=ok;s.onerror=()=>no(Error('ONNX Runtime 加载失败'));document.head.append(s);});ort.env.wasm.wasmPaths='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';ort.env.wasm.numThreads=1;}
 async function loadYolo(){if(YOLO.session)return;await loadOrt();YOLO.session=await ort.InferenceSession.create(YOLO.url,{executionProviders:['wasm']});YOLO.ready=true;}
@@ -545,39 +572,30 @@ async function cameraStep(now){
   if(!video.videoWidth||!YOLO.ready||!S.poseLandmarker)return;
   const vw=video.videoWidth,vh=video.videoHeight;S._vw=vw;S._vh=vh;
   const dts=S._lastCam?Math.min(0.5,(now-S._lastCam)/1000):0;S._lastCam=now;
-  // 1) YOLO 前处理 + 推理 + 解码
   const{tensor,geometry}=yoloPreprocess(video);
   const out=await YOLO.session.run({[YOLO.session.inputNames[0]]:tensor});
   const dets=decodeYolo(out[YOLO.session.outputNames[0]],YOLO.labels,geometry,0.35);
   const people=dets.filter(d=>d.name==='Person').map(d=>d.box);
-  // 2) 多人姿态
   let poses=[];try{poses=(S.poseLandmarker.detectForVideo(video,now).landmarks)||[];}catch(e){}
-  // 3) 追踪
   const tracks=S.tracker.update(people,now);
-  // 4) 姿态关联到人员
   const used=new Set();
   for(const t of tracks){let bi=-1,bd=1e9;poses.forEach((p,i)=>{if(used.has(i))return;const h=poseHipPx(p,vw,vh);if(!h)return;const cx=(t.box[0]+t.box[2])/2,cy=t.box[1]+t.box[3];const d=Math.hypot(h.x-cx,h.y-cy);if(d<bd){bd=d;bi=i;}});t.pose=(bi>=0&&bd<(t.box[3]-t.box[1])*0.9)?poses[bi]:null;if(t.pose)used.add(bi);}
-  // 5) 构建/更新作业者
   const seenSet=new Set();
   for(const t of tracks){
     const id='#'+t.id;if(!S.workers[id])S.workers[id]=mkWorker(id);
     const w=S.workers[id];w.box=t.box;w.pose=t.pose;w.last=now;w.seen+=dts;w.active=true;
-    const pp=ppeForPerson(t.box,dets);setWorkerPpe(w,pp.hat,pp.vest);
+    setWorkerPpe(w,ppeForPerson(t.box,dets));
     w.angles=t.pose?computeAngles(t.pose):null;if(w.angles)tickRiskWorker(w,dts);
     seenSet.add(id);
   }
   for(const id in S.workers){if(!seenSet.has(id)&&id!=='demo')S.workers[id].active=false;}
-  // 6) 选中作业者（默认最大框）
   if(!S.selected||!S.workers[S.selected]||!S.workers[S.selected].active){const act=Object.values(S.workers).filter(w=>w.active);if(act.length){act.sort((a,b)=>(b.box?(b.box[3]-b.box[1]):0)-(a.box?(a.box[3]-a.box[1]):0));S.selected=act[0].id;}}
   const sel=S.workers[S.selected];
-  S.angles=sel&&sel.angles?sel.angles:null;S.risk=sel?sel.risk:{};S.ppe=sel?{hat:sel.hat,vest:sel.vest}:{hat:null,vest:null};
-  // 7) rPPG（选中作业者额头）
+  S.angles=sel&&sel.angles?sel.angles:null;S.risk=sel?sel.risk:{};S.ppe=sel?{hat:sel.hat,vest:sel.vest,mask:sel.mask,harness:sel.harness}:{hat:null,vest:null,mask:null,harness:null};
   if(sel&&sel.pose)samplePpg(sel.pose);
   if(now-(S._lastHr||0)>2000){S._lastHr=now;processHR();}
-  // 8) 运动强度 + 警报/恢复
   if(sel&&sel.pose)computeMotion(sel.pose,dts);
   if(S.angles){tickRecovery(dts);if(S.angles.trunk!=null&&S.angles.trunk>55&&S.angles.headBelowHip)triggerFall();}
-  // 9) 绘制 + UI
   drawCameraScene(dets,tracks);
   throttledUI();
 }
@@ -593,9 +611,10 @@ function demoLoop(now){if(!S.running||S.mode!=='demo')return;const dt=Math.min(0
 
 /* ---------- 事件绑定 ---------- */
 function initTabs(){const tabs=[...document.querySelectorAll('.tabs button')];tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('.tabpane').forEach(p=>{const on=p.dataset.pane===b.dataset.tab;p.classList.toggle('active',on);p.hidden=!on;});});}
-$('btn-demo').onclick=()=>{if(S.mode!=='demo'){stopMonitoring();if(video.srcObject){video.srcObject.getTracks().forEach(t=>t.stop());video.srcObject=null;}S.cameraOn=false;S.yolo.ready=false;S.poseLandmarker=null;YOLO.session=null;switchMode('demo');S.workers={demo:mkWorker('demo')};S.selected='demo';S.ppe={hat:null,vest:null};setBanner('','');startMonitoring();}};
+$('btn-demo').onclick=()=>{if(S.mode!=='demo'){stopMonitoring();if(video.srcObject){video.srcObject.getTracks().forEach(t=>t.stop());video.srcObject=null;}S.cameraOn=false;S.yolo.ready=false;S.poseLandmarker=null;YOLO.session=null;switchMode('demo');S.workers={demo:mkWorker('demo')};S.selected='demo';S.ppe={hat:null,vest:null,mask:null,harness:null};setBanner('','');startMonitoring();}};
 $('btn-camera').onclick=()=>{if(S.mode!=='camera')switchMode('camera');};
 $('btn-start').onclick=()=>{if(S.running)stopMonitoring();else startMonitoring();};
+$('btn-voice').onclick=()=>{voiceOn=!voiceOn;$('btn-voice').textContent=voiceOn?'🔊 语音开':'🔇 语音关';if(voiceOn)speak('语音提示已开启');};
 $('rehab-pick').onchange=renderRehabSteps;
 $('btn-rehab-start').onclick=()=>{const id=$('rehab-pick').value;const d=DISEASE[id];setBanner('info','💪 开始康复训练：'+d.rehab.join(' → '),'完成');toast('已开始「'+$('rehab-pick').selectedOptions[0].textContent+'」康复训练');const steps=[...$('rehab-steps').children];steps.forEach((s,i)=>setTimeout(()=>{if(!steps[i])return;steps[i].querySelector('.idx').textContent='✓';steps[i].querySelector('.idx').classList.add('done');},(i+1)*900));};
 $('btn-ppe-clear').onclick=()=>{S.ppeLog=[];logList($('ppe-log'),[],'暂无记录');};
@@ -609,14 +628,16 @@ function worstJoint(risk){let name=null,r=0;for(const j of JOINTS){if(((risk&&ri
 function collectReport(){const hr=S.hr.history;const hrAvg=hr.length?Math.round(hr.reduce((a,b)=>a+b,0)/hr.length):null;const hrMax=hr.length?Math.max(...hr):null;const hrMin=hr.length?Math.min(...hr):null;const workers=Object.values(S.workers).map(w=>({id:w.label,seen:Math.round(w.seen),hat:w.hat,vest:w.vest,worst:worstJoint(w.risk),risk:w.risk}));return{time:new Date().toLocaleString('zh-CN'),mode:S.mode==='camera'?'摄像头实时':'模拟演示',hr:{avg:hrAvg,max:hrMax,min:hrMin},angles:S.angles,risk:S.risk,workers,alarms:S.alarms.slice(),ppe:S.ppeLog.slice()};}
 function buildReportHTML(r){
   const rows=JOINTS.map(j=>{const deg=r.angles&&r.angles[j.id];const lv=levelOf(j.id,deg);const rr=(r.risk&&r.risk[j.id])||0;return`<tr><td>${j.name}</td><td>${deg==null?'—':deg.toFixed(0)}°</td><td>${lv==='danger'?'危险':lv==='warn'?'注意':'正常'}</td><td>${rr}</td><td>${j.disease}</td></tr>`;}).join('');
+  const mRows=REFS.map(x=>{const cur=r.angles&&r.angles[x.id];const diff=(cur==null)?null:(cur-x.ref);return`<tr><td>${x.name}</td><td>${cur==null?'—':cur.toFixed(0)}°</td><td>${x.ref}°</td><td>${diff==null?'—':(diff>0?'+':'')+diff.toFixed(0)+'°'}</td></tr>`;}).join('');
   const wRows=r.workers.map(w=>`<tr><td>${w.id}</td><td>${w.seen}s</td><td>${w.hat===null?'—':w.hat?'✓':'✗'}</td><td>${w.vest===null?'—':w.vest?'✓':'✗'}</td><td>${w.worst?w.worst.name+' ('+w.worst.r+')':'正常'}</td></tr>`).join('');
   const aRows=r.alarms.map(a=>`<li>${a.t} ${a.txt}</li>`).join('')||'<li>无</li>';
   const pRows=r.ppe.map(p=>`<li>${p.t} ${p.txt}</li>`).join('')||'<li>无</li>';
-  return`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>AI人体姿态与康复监测 · 报告</title><style>body{font-family:"Noto Sans SC",system-ui,sans-serif;margin:0;background:#f6f8fb;color:#0f172a;line-height:1.6}main{max-width:880px;margin:0 auto;padding:24px;background:#fff}h1{font-size:22px;margin:0 0 4px}h1+p{color:#64748b;margin:0 0 20px;font-size:13px}h2{font-size:16px;border-bottom:2px solid #e5eaf1;padding-bottom:6px;margin:26px 0 12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{border:1px solid #e5eaf1;padding:8px;text-align:left}th{background:#f1f5f9;font-weight:600}ul{padding-left:20px;font-size:13px}.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.kpi div{background:#f1f5f9;border-radius:8px;padding:12px}.kpi b{display:block;font-size:20px}.kpi small{color:#64748b}footer{margin-top:26px;color:#94a3b8;font-size:11px}</style></head><body><main><h1>AI人体姿态与康复监测 · 监测报告</h1><p>生成时间：${r.time} · 模式：${r.mode} · 本报告为筛查与风险提示，不构成医学诊断</p><div class="kpi"><div><small>平均心率</small><b>${r.hr.avg??'—'} bpm</b></div><div><small>最高/最低心率</small><b>${r.hr.max??'—'} / ${r.hr.min??'—'}</b></div><div><small>监测人数</small><b>${r.workers.length}</b></div><div><small>警报次数</small><b>${r.alarms.length}</b></div></div><h2>一、关节角度与疾病风险</h2><table><thead><tr><th>关节</th><th>当前角度</th><th>状态</th><th>风险指数</th><th>相关疾病</th></tr></thead><tbody>${rows}</tbody></table><h2>二、各作业者摘要</h2><table><thead><tr><th>作业者</th><th>出现时长</th><th>安全帽</th><th>背心</th><th>最高风险</th></tr></thead><tbody>${wRows}</tbody></table><h2>三、警报记录</h2><ul>${aRows}</ul><h2>四、穿脱记录</h2><ul>${pRows}</ul><footer>本报告由「AI人体姿态与康复监测」自动生成。疾病概率为基于姿势暴露时间的估算值，康复方案为通用健康指引，请以医生诊断为准。</footer></main></body></html>`;}
+  return`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>AI人体姿态与康复监测 · 报告</title><style>body{font-family:"Noto Sans SC",system-ui,sans-serif;margin:0;background:#f6f8fb;color:#0f172a;line-height:1.6}main{max-width:880px;margin:0 auto;padding:24px;background:#fff}h1{font-size:22px;margin:0 0 4px}h1+p{color:#64748b;margin:0 0 20px;font-size:13px}h2{font-size:16px;border-bottom:2px solid #e5eaf1;padding-bottom:6px;margin:26px 0 12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{border:1px solid #e5eaf1;padding:8px;text-align:left}th{background:#f1f5f9;font-weight:600}ul{padding-left:20px;font-size:13px}.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.kpi div{background:#f1f5f9;border-radius:8px;padding:12px}.kpi b{display:block;font-size:20px}.kpi small{color:#64748b}footer{margin-top:26px;color:#94a3b8;font-size:11px}</style></head><body><main><h1>AI人体姿态与康复监测 · 监测报告</h1><p>生成时间：${r.time} · 模式：${r.mode} · 本报告为筛查与风险提示，不构成医学诊断</p><div class="kpi"><div><small>平均心率</small><b>${r.hr.avg??'—'} bpm</b></div><div><small>最高/最低心率</small><b>${r.hr.max??'—'} / ${r.hr.min??'—'}</b></div><div><small>监测人数</small><b>${r.workers.length}</b></div><div><small>警报次数</small><b>${r.alarms.length}</b></div></div><h2>一、关节角度与疾病风险</h2><table><thead><tr><th>关节</th><th>当前角度</th><th>状态</th><th>风险指数</th><th>相关疾病</th></tr></thead><tbody>${rows}</tbody></table><h2>二、运动分析（角度 vs 标准值）</h2><table><thead><tr><th>部位</th><th>当前</th><th>标准值</th><th>差值</th></tr></thead><tbody>${mRows}</tbody></table><h2>三、各作业者摘要</h2><table><thead><tr><th>作业者</th><th>出现时长</th><th>安全帽</th><th>背心</th><th>最高风险</th></tr></thead><tbody>${wRows}</tbody></table><h2>四、警报记录</h2><ul>${aRows}</ul><h2>五、穿脱记录</h2><ul>${pRows}</ul><footer>本报告由「AI人体姿态与康复监测」自动生成。疾病概率为基于姿势暴露时间的估算值，康复方案为通用健康指引，请以医生诊断为准。</footer></main></body></html>`;}
 function buildReportCSV(r){
   const lines=['type,time,text'];
   const hr=r.hr;lines.push('hr_summary,avg,'+hr.avg);lines.push('hr_summary,max,'+hr.max);lines.push('hr_summary,min,'+hr.min);
   for(const j of JOINTS){const deg=r.angles&&r.angles[j.id];lines.push('joint,'+j.id+','+((r.risk&&r.risk[j.id])||0)+','+(deg==null?'':deg.toFixed(0)));}
+  for(const x of REFS){const cur=r.angles&&r.angles[x.id];const diff=(cur==null)?'':((cur-x.ref).toFixed(0));lines.push('motion,'+x.id+','+x.ref+','+(cur==null?'':cur.toFixed(0))+','+diff);}
   for(const w of r.workers)lines.push('worker,'+w.id+','+w.seen+','+w.hat+','+w.vest+','+(w.worst?w.worst.r:0));
   for(const a of r.alarms)lines.push('alarm,'+a.t+','+a.txt);
   for(const p of r.ppe)lines.push('ppe,'+p.t+','+p.txt);
@@ -629,7 +650,9 @@ $('btn-csv').onclick=()=>{const r=collectReport();download('AI人体姿态与康
 /* ---------- 启动 ---------- */
 function boot(){
   fitCanvas();S.workers={demo:mkWorker('demo')};S.selected='demo';
-  buildAngleTable();buildRisk();buildPrevent();buildRehab();initTabs();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();
+  buildAngleTable();buildMotionAnalysis();buildRisk();buildPrevent();buildRehab();initTabs();refreshKpi();drawHRChart();buildWorkers();renderPpeTab();
+  if('speechSynthesis' in window){window.speechSynthesis.getVoices();window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();}
+  setInterval(voiceCheck,1500);
   startMonitoring();
 }
 boot();
